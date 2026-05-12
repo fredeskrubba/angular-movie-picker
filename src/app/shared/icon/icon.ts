@@ -8,4 +8,5 @@ import { CommonModule } from '@angular/common';
 })
 export class Icon {
   @Input() name!: string;
+  @Input() size: number = 24;
 }
