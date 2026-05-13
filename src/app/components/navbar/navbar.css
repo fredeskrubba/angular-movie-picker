@@ -2,25 +2,64 @@ nav {
     background-color: var(--surface);
     color: var(--text-primary);
     position: relative;
-    padding: 1rem;
+    padding: 1.5rem 3rem;
     display: flex;
     align-items: center;
 }
 
+.menu-button {
+    display: none;
+    width: 32px;
+    height: 32px;
+}
+
+.nav-icon {
+    width: 60px;
+    height: 60px;
+}
+
 h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 3rem;
 }
 
 .flex-container {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 1rem;
+}
+
+svg {
+    height: 24px;
+    width: 24px;
+    display: block;
+}
+
+.app-icon {
+
 }
 /* Mobile styles */
 @media (max-width: 768px) {
     nav {
         padding: 1.5rem 2rem;
+    }
+
+    .nav-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .flex-container {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .menu-button {
+        display: block;
     }
 
     svg {
