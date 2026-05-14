@@ -1,1 +1,11 @@
-<p>home works!</p>
+
+<main class="home-content">
+    <div class="desktop-searchbar">
+        <input type="text" placeholder="Search for titles, actors, genres or keywords">
+        <button>Search</button>
+    </div>
+    @for (movie of allMovies(); track movie.movieId){
+        <p>{{movie.title}}</p>
+    }
+</main>
+

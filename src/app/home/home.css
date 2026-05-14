@@ -1,0 +1,54 @@
+.home-content {
+    padding: 2.5rem;
+}
+
+.desktop-searchbar {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.desktop-searchbar input {
+    flex: 4;
+    padding: 0.75rem;
+    background-color: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-family: var(--main-font);
+}
+
+.desktop-searchbar input::placeholder {
+    color: var(--accent);
+    font-weight: 300;
+}
+
+.desktop-searchbar input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.desktop-searchbar button {
+    flex: 0.2;
+    padding: 0.75rem;
+    background-color: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-family: var(--main-font);
+    font-weight: 600;
+    font-size: 22px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.desktop-searchbar button:hover {
+    background-color: var(--accent);
+    color: var(--background);
+}
+
+@media (max-width: 768px) {
+    .desktop-searchbar {
+        display: none;
+    }
+}
