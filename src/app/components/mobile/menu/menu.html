@@ -1,0 +1,22 @@
+@if(isOpen){
+  <div class="menu-overlay" (click)="closeMenu()">
+
+    <div class="menu-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closeMenu()">×</button>
+      <ul>
+        <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+          <span class="flex-container">
+            <app-icon name="app-icon" class="movie-icon" />
+            Find movie
+          </span>
+        </li>
+        <li routerLink="/watchlist" routerLinkActive="active" (click)="closeMenu()">
+            <span class="flex-container">
+              <app-icon name="list-icon" class="movie-icon" />
+              My Watchlist
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+}

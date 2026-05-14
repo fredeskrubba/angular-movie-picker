@@ -1,12 +1,12 @@
 
 
-<nav>
-    <app-icon name="burger-icon" class="menu-button" />
+<nav [class.menu-open]="mobileMenuIsOpen">
+    <app-icon name="burger-icon" class="menu-button" (click)="toggleMenu()"/>
     <span class="flex-container">
         <app-icon name="app-icon" class="nav-icon" />
         <h1>Pickflicks</h1>
     </span>
-    <ul>
+    <ul class="desktop-nav">
         <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
             Find movie
         </li>
@@ -15,3 +15,5 @@
         </li>
     </ul>
 </nav>
+
+<app-menu [isOpen]="mobileMenuIsOpen" (close)="closeMenu()" />

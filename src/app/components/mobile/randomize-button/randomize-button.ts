@@ -6,4 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: './randomize-button.html',
   styleUrl: './randomize-button.css',
 })
-export class RandomizeButton {}
+export class RandomizeButton {
+  randomize() {
+    console.log('random');
+  }
+}

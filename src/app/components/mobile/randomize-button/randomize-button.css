@@ -1,0 +1,17 @@
+button {
+    background-color: var(--accent);
+    color: var(--surface);
+    width: 100%;
+    padding: 2rem;
+    font-size: 32px;
+    font-weight: 600;
+    display: none;
+    border: none;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+    button {
+        display: block;
+    }
+}
