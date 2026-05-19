@@ -1,6 +1,9 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { Movies } from '../services/movies';
 import { Movie } from '../models/movie';
+import { apiResponse } from '../models/apiResponse';
+
+
 @Component({
   selector: 'app-home',
   imports: [],
@@ -13,7 +16,10 @@ export class Home implements OnInit {
   allMovies = signal<Array<Movie>>([])
 
   ngOnInit(): void {
-    console.log(this.movieService.allMovies);
-    this.allMovies.set(this.movieService.allMovies);
+    this.movieService.getAllMovies().subscribe((res: apiResponse) => {
+    const movies: Movie[] = res.results;
+
+  this.allMovies.set(movies);
+});
   }
 }
