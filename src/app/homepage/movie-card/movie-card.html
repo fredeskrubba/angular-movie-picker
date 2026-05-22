@@ -1,0 +1,9 @@
+<article class="movie-card" (mouseenter)="hovered = true" (mouseleave)="hovered = false" [class.hovered]="hovered">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + posterURL()" />
+    
+    
+    <div class="overlay">
+      <!-- <p>{{title()}}</p> -->
+  </div>
+</article>
+

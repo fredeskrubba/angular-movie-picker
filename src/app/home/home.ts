@@ -2,11 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Movies } from '../services/movies';
 import { Movie } from '../models/movie';
 import { apiResponse } from '../models/apiResponse';
+import { MovieCard } from '../homepage/movie-card/movie-card';
 
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [MovieCard],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -1,7 +1,6 @@
 export type Movie = {
     movieId: number;
     title: string;
-    onWatchList: boolean;
-    
-   
+    poster_path: string;
+    onWatchList: boolean;   
 }

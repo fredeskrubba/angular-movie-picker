@@ -15,6 +15,7 @@ html, body {
     padding: 0;
     background-color: var(--background);
     font-family: var(--main-font);
+    height: 100%;
 }
 
 .flex-container {

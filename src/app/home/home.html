@@ -1,11 +1,44 @@
 
-<main class="home-content">
-    <div class="desktop-searchbar">
-        <input type="text" placeholder="Search for titles, actors, genres or keywords">
-        <button>Search</button>
+<main>
+    <div class="home-content">
+        <div class="desktop-searchbar">
+            <input type="text" placeholder="Search for titles, actors, genres or keywords">
+            <button>Search</button>
+        </div>
+        
+        <div class="movie-grid">
+            @for (movie of allMovies(); track movie.movieId){
+                <app-movie-card
+                    [title]="movie.title"
+                    [posterURL]="movie.poster_path">
+                </app-movie-card>
+            }
+        </div>
     </div>
-    @for (movie of allMovies(); track movie.movieId){
-        <p>{{movie.title}}</p>
-    }
+    
+    <article class="movie-details">
+        <video controls>
+            <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+        </video>
+        <div class="details-content">
+            <h2>The Nice guys</h2>
+            <div class="details">
+                <div class="flex-container">
+                    <span>Action</span>
+                    <span>Comedy</span>
+                    <div class="divider"></div>
+                    <p>120 min</p>
+                    <div class="divider"></div>
+                    <p>2015</p>
+                </div>
+                <div class="flex-container">
+                    <p>7.7</p>
+                </div>
+            </div>
+            <p class="movie-description">Lorem ipsum dolor sit amet consectetur. Porta ultrices tortor felis congue. In id amet purus commodo ut cursus turpis. Adipiscing ac placerat urna amet velit ultrices blandit gravida elementum. Augue montes quis lorem egestas integer non adipiscing lorem ultrices.</p>
+
+        </div>
+        <button class="add-button">Add to watchlist</button>
+    </article>
 </main>
 

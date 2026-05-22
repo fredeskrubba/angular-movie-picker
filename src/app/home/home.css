@@ -1,7 +1,36 @@
-.home-content {
-    padding: 2.5rem;
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    height: 100%;
+    min-height: 0;
 }
 
+.home-content {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.movie-grid {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    flex: 1 1 0;
+    min-height: 0;
+    overflow-y: auto;
+}
+
+.movie-grid::-webkit-scrollbar {
+    display: none;
+}
+
+.movie-grid > * {
+     min-width: 0;
+}
 .desktop-searchbar {
     display: flex;
     gap: 20px;
@@ -45,6 +74,26 @@
 .desktop-searchbar button:hover {
     background-color: var(--accent);
     color: var(--background);
+}
+
+.movie-details {
+    background-color: var(--surface);
+    color: var(--accent);
+}
+
+.movie-details video {
+    width: 100%;
+    height: 300px;
+}
+
+.movie-details .add-button {
+    width: 100%;
+    padding: 20px;
+    font-size: 2rem;
+    border: none;
+    color: var(--surface);
+    background-color: var(--accent);
+    margin-top: auto;
 }
 
 @media (max-width: 768px) {
