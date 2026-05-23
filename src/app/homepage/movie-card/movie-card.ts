@@ -1,4 +1,4 @@
-import { Component, input} from '@angular/core';
+import { Component, input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-movie-card',
@@ -6,12 +6,16 @@ import { Component, input} from '@angular/core';
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
+
 export class MovieCard {
-  
   hovered = false;
-  
-  title = input("Default title")
-  posterURL = input("default poster")
 
+  title = input('Default title')
+  posterURL = input('default poster')
 
+  @Output() detailsClicked = new EventEmitter<void>();
+
+  toggleDetails() {
+    this.detailsClicked.emit();
+  }
 }

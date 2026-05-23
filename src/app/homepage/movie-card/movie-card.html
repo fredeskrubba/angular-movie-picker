@@ -1,4 +1,4 @@
-<article class="movie-card" (mouseenter)="hovered = true" (mouseleave)="hovered = false" [class.hovered]="hovered">
+<article class="movie-card" (mouseenter)="hovered = true" (mouseleave)="hovered = false" [class.hovered]="hovered" (click)="toggleDetails()">
     <img [src]="'https://image.tmdb.org/t/p/w500' + posterURL()" />
     
     
