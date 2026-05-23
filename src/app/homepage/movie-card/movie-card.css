@@ -33,6 +33,6 @@ img {
   );
 }
 
-.hovered .overlay {
+.hovered .overlay, .movie-card-selected .overlay {
     background: none;
 }

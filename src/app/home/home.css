@@ -1,9 +1,13 @@
 main {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr;
     height: 100dvh;
     overflow: hidden;
     min-height: 0;
+}
+
+main.show-details {
+    grid-template-columns: 2fr 1fr;
 }
 
 .home-content {

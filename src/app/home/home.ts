@@ -22,10 +22,18 @@ export class Home implements OnInit {
     this.movieService.getAllMovies().subscribe((res: apiResponse) => {
       const movies: Movie[] = res.results;
       this.allMovies.set(movies);
-    });
-  }
 
+      console.log(this.allMovies())
+    });
+
+  }
+  
   toggleDetails(movie: Movie) {
-    this.selectedMovie.set(movie);
+    if(this.selectedMovie()?.id == movie.id){
+      this.selectedMovie.set(null)
+    } else {
+
+      this.selectedMovie.set(movie);
+    }
   }
 }

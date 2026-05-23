@@ -12,8 +12,10 @@ export class MovieCard {
 
   title = input('Default title')
   posterURL = input('default poster')
+  selectedMovie = input(false)
 
   @Output() detailsClicked = new EventEmitter<void>();
+
 
   toggleDetails() {
     this.detailsClicked.emit();
