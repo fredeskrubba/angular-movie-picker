@@ -23,11 +23,21 @@ main.show-details {
 .movie-grid {
     display: grid;
     gap: 0.5rem;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     width: 100%;
     flex: 1 1 0;
     min-height: 0;
     overflow-y: auto;
+}
+
+main.show-details .movie-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+@media (max-width: 1200px) {
+    main.show-details .movie-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
 }
 
 .movie-grid::-webkit-scrollbar {
