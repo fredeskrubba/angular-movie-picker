@@ -7,7 +7,7 @@
 .about-card {
     width: min(800px, 100%);
     background: var(--surface, #1e1e1e);
-    border-radius: 20px;
+    border-radius: 10px;
     border: 1px solid var(--accent);
     padding: 2rem;
     color: white;
@@ -16,6 +16,7 @@
 
 .about-card h2 {
     margin-bottom: 1rem;
+    margin-top: 0;
     font-size: 2rem;
 }
 
