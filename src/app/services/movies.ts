@@ -5,6 +5,9 @@ import { apiResponse } from '../models/DTOs/apiResponse';
 import { environment } from '../../environments/environtment';
 import { movieDetailsResponse } from '../models/DTOs/movieDetailsResponse';
 import { movieCastResponse } from '../models/DTOs/movieCastResponse';
+import { movieStreamResponse } from '../models/DTOs/movieStreamResponse';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -36,6 +39,16 @@ export class Movies {
     const url = `https://api.themoviedb.org/3/movie/${id}/credits`
 
     return this.http.get<movieCastResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
+  }
+
+  getMovieStreamers(id:number){
+    const url = `https://api.themoviedb.org/3/movie/${id}/watch/providers`
+
+    return this.http.get<movieStreamResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }

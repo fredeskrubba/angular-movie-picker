@@ -6,6 +6,10 @@ import { movieDetailsResponse } from '../../../models/DTOs/movieDetailsResponse'
 import { movieCastResponse } from '../../../models/DTOs/movieCastResponse';
 import { CastMember } from '../../../models/castMember';
 import { Director } from '../../../models/director';
+import { movieStreamResponse } from '../../../models/DTOs/movieStreamResponse';
+
+
+
 @Component({
   selector: 'app-movie-details',
   imports: [Icon],
@@ -57,7 +61,14 @@ export class MovieDetails {
       this.directors.set(res.crew.filter((member) => member.job.toLowerCase() === 'director'));
       console.log(this.directors());
     });
+
+
+    this.movieService.getMovieStreamers(id).subscribe((res: movieStreamResponse) => {
+
+      
+      console.log(res);
     });
+  });
   
   
 }

@@ -16,5 +16,14 @@ export const routes: Routes = [{
                 m => m.Watchlist
             )
         }
+    },
+    {
+        path: "about",
+        pathMatch: "full",
+        loadComponent: () => {
+            return import("./about/about").then(
+                m => m.About
+            )
+        }
     }
 ];

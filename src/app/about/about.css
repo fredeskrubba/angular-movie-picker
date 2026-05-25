@@ -1,0 +1,71 @@
+.about-page {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+}
+
+.about-card {
+    width: min(800px, 100%);
+    background: var(--surface, #1e1e1e);
+    border-radius: 20px;
+    border: 1px solid var(--accent);
+    padding: 2rem;
+    color: white;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.about-card h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.about-card > p {
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.tmdb-credit {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    padding: 1.25rem;
+    border-radius: 16px;
+
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(8px);
+}
+
+.tmdb-logo {
+    width: 120px;
+    height: auto;
+    object-fit: contain;
+}
+
+.tmdb-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.tmdb-text p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.tmdb-disclaimer {
+    font-size: 0.9rem;
+    opacity: 0.7;
+}
+
+@media (max-width: 600px) {
+    .tmdb-credit {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .tmdb-logo {
+        width: 100px;
+    }
+}
