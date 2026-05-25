@@ -14,11 +14,14 @@
 }
 
 body, html{
- 
+    height: 100dvh;
     background-color: var(--background);
     font-family: var(--main-font);
 }
 
+body {
+  margin: 0;
+}
 app-root {
     display: flex;
     flex-direction: column;

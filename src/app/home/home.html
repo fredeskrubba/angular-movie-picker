@@ -20,57 +20,7 @@
     </div>
     
     @if(selectedMovie()){
-      <article class="movie-details">
-          <video controls>
-              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-          </video>
-          <div class="details-content">
-              <h2>{{ selectedMovie()?.title }}</h2>
-              <div class="details">
-                  <div class="tags">
-                      <span class="tag">Action</span>
-                      <span class="tag">Comedy</span>
-                  </div>
-                  <div class="sub-info">
-                      <div class="flex-container">
-                          <p class="info-text">120 min</p>
-                          <p class="info-text">2015</p>
-                      </div>
-                      <div class="flex-container">
-                          <p>7.7</p>
-                          <app-icon name="imdb-icon" class="rating-icon" />
-                      </div>
-                  </div>
-              </div>
-              <p class="movie-description">Lorem ipsum dolor sit amet consectetur. Porta ultrices tortor felis congue. In id amet purus commodo ut cursus turpis. Adipiscing ac placerat urna amet velit ultrices blandit gravida elementum. Augue montes quis lorem egestas integer non adipiscing lorem ultrices.</p>
-              <div class="director">
-                  <h3>Director</h3>
-                  <div class="director-slider">
-                      <img src="profile-default.png" alt="">
-                      <p>Shane Black</p>
-                  </div>
-              </div>
-              <div class="director">
-                  <h3>Director</h3>
-                  <div class="director-slider">
-                      <img src="profile-default.png" alt="">
-                      <p>Shane Black</p>
-                  </div>
-              </div>
-          </div>
-          <div class="bottom-container">
-              <div class="stream-options">
-                  <h4>Stream on</h4>
-                  <div class="stream-slider">
-                      <app-icon name="netflix-logo" class="stream-logo" />
-                      <app-icon name="hbo-logo" class="stream-logo" />
-                      <app-icon name="disney-plus-logo" class="stream-logo" />
-                      <app-icon name="prime-logo" class="stream-logo" />
-                  </div>
-              </div>
-              <button class="add-button">Add to watchlist</button>
-          </div>
-      </article>
+      <app-movie-details [selectedMovie]="selectedMovie()"/>
     }
 </main>
 

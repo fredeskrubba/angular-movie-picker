@@ -1,0 +1,68 @@
+<article class="movie-details">
+            @if(movie()?.video){
+                <video controls>
+                    <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
+                </video>
+
+            } @else {
+                <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" class="poster-image"/>
+            }
+          <div class="details-content">
+              <h2>{{ movie()?.title }}</h2>
+              <div class="details">
+                  <div class="tags">
+                    @for (genre of movie()?.genres; track $index) {
+
+                        <span class="tag">{{genre.name}}</span>
+                    }
+                  </div>
+                  <div class="sub-info">
+                      <div class="flex-container">
+                          <p class="info-text">{{movie()?.runtime}} min</p>
+                          <p class="info-text">{{movie()?.release_date?.substring(0,4)}}</p>
+                      </div>
+                      <div class="flex-container">
+                          <p>7.7</p>
+                          <app-icon name="imdb-icon" class="rating-icon" />
+                      </div>
+                  </div>
+              </div>
+              <p class="movie-description">{{movie()?.overview}}</p>
+              <div class="director">
+                  <h3>Cast</h3>
+                  <div class="cast-slider">
+                        @for (member of cast(); track $index) {
+                            <div class="cast-card">
+                                @if(member.profile_path){
+                                    <img [src]="'https://image.tmdb.org/t/p/w500' + member.profile_path" class="cast-image"/>
+                                } @else {
+                                    <img src="profile-default.png" alt="profile-default">
+                                }
+                                <p>{{member.name}} - {{member.character}}</p>
+
+                            </div>
+                       
+                    }
+                  </div>
+              </div>
+              <div class="director">
+                  <h3>Director</h3>
+                  <div class="director-slider">
+                      <img src="profile-default.png" alt="">
+                      <p>Shane Black</p>
+                  </div>
+              </div>
+          </div>
+          <div class="bottom-container">
+              <div class="stream-options">
+                  <h4>Stream on</h4>
+                  <div class="stream-slider">
+                      <app-icon name="netflix-logo" class="stream-logo" />
+                      <app-icon name="hbo-logo" class="stream-logo" />
+                      <app-icon name="disney-plus-logo" class="stream-logo" />
+                      <app-icon name="prime-logo" class="stream-logo" />
+                  </div>
+              </div>
+              <button class="add-button">Add to watchlist</button>
+          </div>
+      </article>
