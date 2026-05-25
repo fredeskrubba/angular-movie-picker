@@ -28,7 +28,7 @@
                   </div>
               </div>
               <p class="movie-description">{{movie()?.overview}}</p>
-              <div class="director">
+              <div class="cast">
                   <h3>Cast</h3>
                   <div class="cast-slider">
                         @for (member of cast(); track $index) {
@@ -40,16 +40,24 @@
                                 }
                                 <p>{{member.name}} - {{member.character}}</p>
 
-                            </div>
-                       
-                    }
+                            </div>  
+                        }
                   </div>
               </div>
               <div class="director">
                   <h3>Director</h3>
                   <div class="director-slider">
-                      <img src="profile-default.png" alt="">
-                      <p>Shane Black</p>
+                      @for (director of directors(); track $index) {
+                                <div class="director-card">
+                                    @if(director.profile_path){
+                                        <img [src]="'https://image.tmdb.org/t/p/w500' + director.profile_path" class="cast-image"/>
+                                    } @else {
+                                        <img src="profile-default.png" alt="profile-default">
+                                    }
+                                    <p>{{director.name}}</p>
+                                </div>  
+                            }
+
                   </div>
               </div>
           </div>

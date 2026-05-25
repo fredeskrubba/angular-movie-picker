@@ -5,6 +5,7 @@ import { Movies } from '../../../services/movies';
 import { movieDetailsResponse } from '../../../models/DTOs/movieDetailsResponse';
 import { movieCastResponse } from '../../../models/DTOs/movieCastResponse';
 import { CastMember } from '../../../models/castMember';
+import { Director } from '../../../models/director';
 @Component({
   selector: 'app-movie-details',
   imports: [Icon],
@@ -19,6 +20,7 @@ export class MovieDetails {
   selectedMovie = input<Movie | null>(null)
   movie = linkedSignal(() => this.selectedMovie());
   cast = signal<CastMember[]>([]);
+  directors = signal<Director[]>([]);
 
   constructor() {
   effect(() => {
@@ -52,11 +54,9 @@ export class MovieDetails {
     this.movieService.getMovieCast(id).subscribe((res: movieCastResponse) => {
 
       this.cast.set(res.cast);
-      console.log(this.cast());
+      this.directors.set(res.crew.filter((member) => member.job.toLowerCase() === 'director'));
+      console.log(this.directors());
     });
-  
-  
-  
     });
   
   
