@@ -4,6 +4,7 @@
     overflow-y: auto;
     min-height: 0;
     background-color: var(--surface);
+    flex: 1;
 }
 
 .movie-details {

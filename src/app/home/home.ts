@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { Movies } from '../services/movies';
 import { Movie } from '../models/movie';
 import { apiResponse } from '../models/DTOs/apiResponse';
-import { MovieCard } from '../homepage/movie-card/movie-card';
+import { MovieCard } from '../components/home/movie-card/movie-card';
 import { MovieDetails } from '../components/home/movie-details/movie-details';
 
 

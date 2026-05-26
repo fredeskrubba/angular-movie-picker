@@ -1,9 +1,18 @@
+:host {
+    flex: 1;
+    min-height: 0;
+    height: 100vh;
+      display: flex;
+  flex-direction: column;
+}
+
 main {
     display: grid;
     grid-template-columns: 1fr;
     height: 100dvh;
     overflow: hidden;
     min-height: 0;
+    flex: 1;
 }
 
 main.show-details {
