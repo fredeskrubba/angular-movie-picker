@@ -62,15 +62,17 @@
               </div>
           </div>
           <div class="bottom-container">
-              <div class="stream-options">
-                  <h4>Stream on</h4>
-                  <div class="stream-slider">
-                      <app-icon name="netflix-logo" class="stream-logo" />
-                      <app-icon name="hbo-logo" class="stream-logo" />
-                      <app-icon name="disney-plus-logo" class="stream-logo" />
-                      <app-icon name="prime-logo" class="stream-logo" />
-                  </div>
-              </div>
+            @if(streamProviders() != undefined && streamProviders().length > 0){
+                <div class="stream-options">
+                    <h4>Stream on</h4>
+                    <div class="stream-slider">
+                      @for (streamer of streamProviders(); track $index) {
+                          <p>{{streamer.provider_name}}</p>
+                      }
+                    </div>
+                </div>
+
+            }
               <button class="add-button">Add to watchlist</button>
           </div>
       </article>

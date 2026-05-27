@@ -1,8 +1,10 @@
-import { WatchProviderResult } from "../watchProviderResult";
-
+import { StreamProvider } from "../streamProvider";
 export type movieStreamResponse = {
     id: number;
     results: {
-        [countryCode: string]: WatchProviderResult;
+        [countryCode: string]: {
+         flatrate:   StreamProvider[];
+        };
+        
     }
 }
