@@ -6,7 +6,8 @@ import { environment } from '../../environments/environtment';
 import { movieDetailsResponse } from '../models/DTOs/movieDetailsResponse';
 import { movieCastResponse } from '../models/DTOs/movieCastResponse';
 import { movieStreamResponse } from '../models/DTOs/movieStreamResponse';
-
+import { movieImdbIdResponse } from '../models/DTOs/movieImdbIdResponse';
+import { movieImdbRatingResponse } from '../models/DTOs/movieImdbRatingResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -53,5 +54,21 @@ export class Movies {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }
     })
+  }
+
+  getMovieImdbId(id:number){
+    const url = `https://api.themoviedb.org/3/movie/${id}/external_ids`
+
+    return this.http.get<movieImdbIdResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
+  }
+
+  getImdbRating(imdbId:string){
+    const url = `http://www.omdbapi.com/?apikey=${environment.omdbKey}&i=${imdbId}`
+
+    return this.http.get<movieImdbRatingResponse>(url)
   }
 }
