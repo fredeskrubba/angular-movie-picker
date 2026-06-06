@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { Movies } from '../services/movies';
 import { Movie } from '../models/movie';
 import { apiResponse } from '../models/DTOs/apiResponse';
@@ -12,6 +12,7 @@ import { MovieDetails } from '../components/home/movie-details/movie-details';
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
+
 export class Home implements OnInit {
   movieService = inject(Movies)
 
@@ -27,6 +28,20 @@ export class Home implements OnInit {
 
   }
   
+  searchQuery = signal<string>('');
+
+  items = computed(() => {
+    const sq = this.searchQuery().toLowerCase();
+    return this.allMovies().filter(x => 
+      x.title.toLowerCase().includes(sq) || 
+      (x.overview?.toLowerCase().includes(sq) ?? false)
+    );
+  });
+
+   onSearchUpdated(sq: string) {
+    this.searchQuery.set(sq);
+  }
+
   toggleDetails(movie: Movie) {
     if(this.selectedMovie()?.id == movie.id){
       this.selectedMovie.set(null)

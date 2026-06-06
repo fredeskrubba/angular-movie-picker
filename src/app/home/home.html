@@ -2,12 +2,12 @@
 <main [class.show-details]="selectedMovie()">
     <div class="home-content">
         <div class="desktop-searchbar">
-            <input type="text" placeholder="Search for titles, actors, genres or keywords">
+            <input #searchQuery type="text" placeholder="Search for titles, actors, genres or keywords" (input)="onSearchUpdated(searchQuery.value)">
             <button>Search</button>
         </div>
         
         <div class="movie-grid">
-            @for (movie of allMovies(); track movie.id){
+            @for (movie of items(); track movie.id){
                 <app-movie-card
                     [title]="movie.title"
                     [posterURL]="movie.poster_path"
