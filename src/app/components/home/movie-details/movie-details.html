@@ -2,14 +2,9 @@
     @if(isLoading()){
         <app-movie-details-skeleton />
     } @else {
-                @if(movie()?.video){
-                    <video controls>
-                        <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" type="video/mp4">
-                    </video>
-        
-                } @else {
-                    <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" class="poster-image"/>
-                }
+                
+                <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" class="poster-image"/>
+                
                 <div class="details-content">
                     <h2>{{ movie()?.title }}</h2>
                     <div class="details">
@@ -72,7 +67,15 @@
                           <h4>Stream on</h4>
                           <div class="stream-slider">
                             @for (streamer of streamProviders(); track $index) {
-                                <p>{{streamer.provider_name}}</p>
+                                @if (getProviderIcon(streamer.provider_name)) {
+                                    <app-icon
+                                        [name]="getProviderIcon(streamer.provider_name)!"
+                                        class="rating-icon"
+                                        title={{streamer.provider_name}}
+                                    />
+                                    } @else {
+                                    <p>{{ streamer.provider_name }}</p>
+                                    }
                             }
                           </div>
                       </div>

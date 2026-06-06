@@ -133,6 +133,12 @@
     margin-bottom: 30px;
 }
 
+.stream-options .provider-logo {
+    height: 40px;
+    width: 40px;
+}
+
+
 .stream-options h4 {
     margin-bottom: 5px;
     font-size: 20px;

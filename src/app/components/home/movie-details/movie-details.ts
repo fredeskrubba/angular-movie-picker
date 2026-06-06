@@ -10,6 +10,7 @@ import { movieStreamResponse } from '../../../models/DTOs/movieStreamResponse';
 import { StreamProvider } from '../../../models/streamProvider';
 import { MovieDetailsSkeleton } from '../../loading/movie-details-skeleton/movie-details-skeleton';
 import { forkJoin } from 'rxjs';
+import { getProviderIcon } from '../../../../helpers/getProviderIcon';
 
 @Component({
   selector: 'app-movie-details',
@@ -31,6 +32,7 @@ export class MovieDetails {
   rating = signal<string>("0");
   isLoading = signal<boolean>(true);
 
+  getProviderIcon = getProviderIcon;
 
 
   constructor() {
