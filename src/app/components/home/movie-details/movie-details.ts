@@ -11,6 +11,7 @@ import { StreamProvider } from '../../../models/streamProvider';
 import { MovieDetailsSkeleton } from '../../loading/movie-details-skeleton/movie-details-skeleton';
 import { forkJoin } from 'rxjs';
 import { getProviderIcon } from '../../../../helpers/getProviderIcon';
+import { StorageService } from '../../../services/storage';
 
 @Component({
   selector: 'app-movie-details',
@@ -21,7 +22,7 @@ import { getProviderIcon } from '../../../../helpers/getProviderIcon';
 export class MovieDetails {
 
   movieService = inject(Movies)
-
+  storageService = inject(StorageService)
   
   selectedMovie = input<Movie | null>(null)
   movie = linkedSignal(() => this.selectedMovie());
@@ -105,5 +106,23 @@ export class MovieDetails {
     });
     
     
+  }
+
+  addToWatchlist(){
+    const movie = this.selectedMovie();
+    if (!movie) {
+      return;
+    }
+
+    const currentWatchlist = this.storageService.getItem('Watchlist');
+    const watchlist: Movie[] = Array.isArray(currentWatchlist) ? currentWatchlist : [];
+
+    if (!watchlist.some(item => item.id === movie.id)) {
+      watchlist.push(movie);
+      this.storageService.setItem('Watchlist', watchlist);
+    }
+
+    
+    console.log(localStorage.getItem("Watchlist"));
   }
 }
