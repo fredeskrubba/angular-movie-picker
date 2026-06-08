@@ -41,6 +41,7 @@ export class Home implements OnInit {
 
    onSearchUpdated(sq: string) {
     this.searchQuery.set(sq);
+    this.selectedMovie.set(null);
   }
 
   toggleDetails(movie: Movie) {
