@@ -2,9 +2,10 @@
     @if(isLoading()){
         <app-movie-details-skeleton />
     } @else {
-                
-                <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" class="poster-image"/>
-                
+                        <div class="poster-hero" [style.background-image]="'url(https://image.tmdb.org/t/p/w500' + movie()?.poster_path + ')'">
+                    <img [src]="'https://image.tmdb.org/t/p/w500' + movie()?.poster_path" class="poster-image"/>
+                </div>
+
                 <div class="details-content">
                     <h2>{{ movie()?.title }}</h2>
                     <div class="details">
