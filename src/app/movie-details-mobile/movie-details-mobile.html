@@ -1,1 +1,73 @@
-<p>movie-details-mobile works!</p>
+<div>
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movieInfo()?.poster_path" class="poster-image"/>
+    <h2>{{movieInfo()?.title}}</h2>
+    <div class="details">
+        <div class="tags">
+            @for (genre of movieInfo()?.genres; track $index) {
+
+                <span class="tag">{{genre.name}}</span>
+            }
+        </div>
+        <div class="sub-info">
+            <div class="flex-container">
+                <p class="info-text">{{movieInfo()?.runtime}} min</p>
+                <p class="info-text">{{movieInfo()?.release_date?.substring(0,4)}}</p>
+            </div>
+        </div>
+        <p class="movie-description">{{movieInfo()?.overview}}</p>
+        <div class="cast">
+                        <h3>Cast</h3>
+                        <div class="cast-slider">
+                              @for (member of cast(); track $index) {
+                                  <div class="cast-card">
+                                      @if(member.profile_path){
+                                          <img [src]="'https://image.tmdb.org/t/p/w500' + member.profile_path" class="cast-image"/>
+                                      } @else {
+                                          <img src="profile-default.png" alt="profile-default">
+                                      }
+                                      <p>{{member.name}} - {{member.character}}</p>
+      
+                                  </div>  
+                              }
+                        </div>
+                    </div>
+                    <div class="director">
+                        <h3>Director</h3>
+                        <div class="director-slider">
+                            @for (director of directors(); track $index) {
+                                      <div class="director-card">
+                                          @if(director.profile_path){
+                                              <img [src]="'https://image.tmdb.org/t/p/w500' + director.profile_path" class="cast-image"/>
+                                          } @else {
+                                              <img src="profile-default.png" alt="profile-default">
+                                          }
+                                          <p>{{director.name}}</p>
+                                      </div>  
+                                  }
+      
+                        </div>
+                    </div>
+    </div>
+    <div class="bottom-container">
+                  @if(streamProviders() != undefined && streamProviders().length > 0){
+                      <div class="stream-options">
+                          <h4>Stream on</h4>
+                          <div class="stream-slider">
+                            @for (streamer of streamProviders(); track $index) {
+                                @if (getProviderIcon(streamer.provider_name)) {
+                                    <app-icon
+                                        [name]="getProviderIcon(streamer.provider_name)!"
+                                        class="rating-icon"
+                                        title={{streamer.provider_name}}
+                                    />
+                                    } @else {
+                                    <p>{{ streamer.provider_name }}</p>
+                                    }
+                            }
+                          </div>
+                      </div>
+      
+                  }
+                    <button class="add-button">Add to watchlist</button>
+                </div>
+</div>
