@@ -1,0 +1,14 @@
+<article class="card" (click)="navigateToDetails()">
+    <img [src]="'https://image.tmdb.org/t/p/w500' + movieInfo()?.poster_path" class="poster-image"/>
+
+    <div class="info-section">
+        <div class="card-header">
+            <h5>{{movieInfo()?.title}}</h5>
+            <app-icon name="redirect-icon" class="redirect-icon" />
+        </div>
+        <div class="card-footer">
+            <p>{{movieInfo()?.runtime}}</p>
+            <p>{{movieInfo()?.release_date?.substring(0,4)}}</p>
+        </div>
+    </div>
+</article>

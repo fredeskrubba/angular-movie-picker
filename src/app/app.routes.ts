@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+
 export const routes: Routes = [{
     path: "",
     pathMatch: "full",
@@ -25,5 +26,14 @@ export const routes: Routes = [{
                 m => m.About
             )
         }
+    },
+    {
+        path: 'movies/:id',
+        loadComponent: () => {
+            return import("./movie-details-mobile/movie-details-mobile").then(
+                m => m.MovieDetailsMobile
+            )
+        }
+
     }
 ];

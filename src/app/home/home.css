@@ -28,7 +28,7 @@ main.show-details {
     overflow: hidden;
 }
 
-.movie-grid {
+.movie-grid-desktop {
     display: grid;
     gap: 0.5rem;
    grid-template-columns: repeat(auto-fit, 220px);
@@ -39,13 +39,12 @@ main.show-details {
     overflow-y: auto;
 }
 
-@media (max-width: 1200px) {
-    main.show-details .movie-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
+.movie-grid-mobile {
+    display: none;
 }
 
-.movie-grid::-webkit-scrollbar {
+
+.movie-grid-desktop::-webkit-scrollbar {
     display: none;
 }
 
@@ -98,8 +97,20 @@ main.show-details {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     .desktop-searchbar {
         display: none;
+    }
+
+    .movie-grid-desktop {
+        display: none;
+    }
+    .movie-grid-mobile {
+        display: grid;
+        gap: 2rem;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 650px));
+        justify-content: center;
+        width: 100%;
+        overflow-y: auto;
     }
 }

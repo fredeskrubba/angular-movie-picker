@@ -6,7 +6,7 @@
             <button>Search</button>
         </div>
         
-        <div class="movie-grid">
+        <div class="movie-grid-desktop">
             @for (movie of items(); track movie.id){
                 <app-movie-card
                     [title]="movie.title"
@@ -15,6 +15,11 @@
                     [selectedMovie]="movie.id === selectedMovie()?.id"
                 >
                 </app-movie-card>
+            }
+        </div>
+        <div class="movie-grid-mobile">
+            @for (movie of items(); track movie.id){
+                <app-movie-card-mobile [movieInfo]="movie"></app-movie-card-mobile>
             }
         </div>
     </div>

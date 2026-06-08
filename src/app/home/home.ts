@@ -4,11 +4,12 @@ import { Movie } from '../models/movie';
 import { apiResponse } from '../models/DTOs/apiResponse';
 import { MovieCard } from '../components/home/movie-card/movie-card';
 import { MovieDetails } from '../components/home/movie-details/movie-details';
+import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
 
 
 @Component({
   selector: 'app-home',
-  imports: [MovieCard, MovieDetails],
+  imports: [MovieCard, MovieDetails, MovieCardMobile],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
