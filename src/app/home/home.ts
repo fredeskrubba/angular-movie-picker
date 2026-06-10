@@ -99,6 +99,7 @@ export class Home implements OnInit {
     case 'all':
       
       console.log("all");
+      this.allMovies.set([]);
       break;
 
     default:

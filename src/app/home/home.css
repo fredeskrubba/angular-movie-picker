@@ -28,6 +28,25 @@ main.show-details {
     overflow: hidden;
 }
 
+.home-content .no-movies-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.home-content .no-movies-container h3 {
+    color: var(--accent);
+    font-size: 30px;
+    font-weight: 400;
+    margin: 0;
+}
+.home-content .no-movies-container img {
+    height: 300px;
+    width: 500px;
+}
 .movie-grid-desktop {
     display: grid;
     gap: 1rem;
