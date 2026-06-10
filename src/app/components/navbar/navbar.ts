@@ -19,11 +19,11 @@ export class Navbar {
 
   mobileMenuIsOpen = false;
 
-  currentTab = signal('trending');
+  currentTab = signal('popular');
   currentPath = signal(this.router.url.split('?')[0]);
 
   showSubnav = computed(() => this.currentPath() === '/browse');
-  tabs = ['Trending', 'Upcoming', 'Top Rated', 'Popular', 'All'];
+  tabs = ['Now Playing', 'Popular', 'Upcoming', 'Top Rated', 'All'];
 
   constructor() {
     this.router.events
@@ -34,7 +34,7 @@ export class Navbar {
         )
       )
       .subscribe((event) => {
-        const tab = this.route.snapshot.queryParamMap.get('tab') ?? 'trending';
+        const tab = this.route.snapshot.queryParamMap.get('tab') ?? 'Now Playing';
 
         this.currentTab.set(tab);
         this.currentPath.set(event.urlAfterRedirects.split('?')[0]);

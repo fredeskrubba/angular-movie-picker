@@ -20,27 +20,26 @@ export class Home implements OnInit {
   router = inject(Router);
 
 
-  currentTab = signal('trending');
+  currentTab = signal('Now Playing');
   allMovies = signal<Array<Movie>>([])
   selectedMovie = signal<Movie | null>(null)
 
   ngOnInit(): void {
     this.router.navigate([], {
-      queryParams: { tab: "trending" },
+      queryParams: { tab: "now_playing" },
       queryParamsHandling: 'merge',
     });
 
     this.route.queryParamMap.subscribe(params => {
-      const tab = params.get('tab') ?? 'trending';
+      const tab = params.get('tab') ?? 'Now Playing';
 
       console.log('Current tab:', tab);
 
       this.currentTab.set(tab);
+      this.fetchMovies(this.currentTab())
 
-    
     });
 
-    this.fetchMovies(this.currentTab())
 
   }
   
@@ -70,10 +69,45 @@ export class Home implements OnInit {
 
 
   fetchMovies(category: string){
-    this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
-      const movies: Movie[] = res.results;
-      this.allMovies.set(movies);
 
-    });
+    switch (this.currentTab().toLocaleLowerCase()) {
+    case 'now_playing':
+      this.movieService.getNowPlayingMovies().subscribe((res) => {
+        this.allMovies.set(res.results);
+      });
+      break;
+
+    case 'upcoming':
+      this.movieService.getUpcomingMovies().subscribe((res) => {
+        this.allMovies.set(res.results);
+      });
+      break;
+
+    case 'top_rated':
+      this.movieService.getTopRatedMovies().subscribe((res) => {
+        this.allMovies.set(res.results);
+      });
+      break;
+
+    case 'popular':
+      this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
+        const movies: Movie[] = res.results;
+        this.allMovies.set(movies);
+      });
+      break;
+
+    case 'all':
+      
+      console.log("all");
+      break;
+
+    default:
+      this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
+        const movies: Movie[] = res.results;
+        this.allMovies.set(movies);
+      });
+      break;
+  }
+
   }
 }
