@@ -33,9 +33,8 @@ export class Home implements OnInit {
     this.route.queryParamMap.subscribe(params => {
       const tab = params.get('tab') ?? 'Now Playing';
 
-      console.log('Current tab:', tab);
-
       this.currentTab.set(tab);
+      this.selectedMovie.set(null);
       this.fetchMovies(this.currentTab())
 
     });
@@ -98,7 +97,6 @@ export class Home implements OnInit {
 
     case 'all':
       
-      console.log("all");
       this.allMovies.set([]);
       break;
 
