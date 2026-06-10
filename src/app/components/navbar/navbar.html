@@ -5,7 +5,7 @@
         <h1>Pickflicks</h1>
     </span>
     <ul class="desktop-nav">
-        <li routerLink="/" routerLinkActive="active">
+        <li routerLink="/browse" [queryParams]="{ tab: currentTab() }" routerLinkActive="active">
             Find movie
         </li>
         <li routerLink="/watchlist" routerLinkActive="active">

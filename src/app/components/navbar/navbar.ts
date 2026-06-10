@@ -22,7 +22,7 @@ export class Navbar {
   currentTab = signal('trending');
   currentPath = signal(this.router.url.split('?')[0]);
 
-  showSubnav = computed(() => this.currentPath() === '/');
+  showSubnav = computed(() => this.currentPath() === '/browse');
   tabs = ['Trending', 'Upcoming', 'Top Rated', 'Popular', 'All'];
 
   constructor() {
