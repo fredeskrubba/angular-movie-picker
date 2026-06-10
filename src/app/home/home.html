@@ -2,8 +2,7 @@
 <main [class.show-details]="selectedMovie()">
     <div class="home-content">
         <div class="desktop-searchbar">
-            <input #searchQuery type="text" placeholder="Search for titles, actors, genres or keywords" (input)="onSearchUpdated(searchQuery.value)">
-            <button>Search</button>
+            <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)">
         </div>
         
         <div class="movie-grid-desktop">

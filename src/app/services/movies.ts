@@ -18,8 +18,35 @@ export class Movies {
 
   http = inject(HttpClient);
 
-  getAllMovies(){
+  getPopularMovies(){
     const url = "https://api.themoviedb.org/3/movie/popular"
+    return this.http.get<apiResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
+  }
+
+  getNowPlayingMovies(){
+    const url = "https://api.themoviedb.org/3/movie/now_playing"
+    return this.http.get<apiResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
+  }
+
+  getTopRatedMovies(){
+    const url = "https://api.themoviedb.org/3/movie/top_rated"
+    return this.http.get<apiResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
+  }
+
+  getUpcomingMovies(){
+    const url = "https://api.themoviedb.org/3/movie/upcoming"
     return this.http.get<apiResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
@@ -70,5 +97,16 @@ export class Movies {
     const url = `http://www.omdbapi.com/?apikey=${environment.omdbKey}&i=${imdbId}`
 
     return this.http.get<movieImdbRatingResponse>(url)
+  }
+
+
+  searchForMovie(searchQuery:string){
+    const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}`
+
+    return this.http.get<apiResponse>(url, {
+      headers: {
+        "Authorization": `Bearer ${environment.tmdbToken}`,
+      }
+    })
   }
 }

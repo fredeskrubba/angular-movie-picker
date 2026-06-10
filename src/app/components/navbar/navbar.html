@@ -1,5 +1,3 @@
-
-
 <nav [class.menu-open]="mobileMenuIsOpen">
     <app-icon name="burger-icon" class="menu-button" (click)="toggleMenu()"/>
     <span class="flex-container">
@@ -18,5 +16,19 @@
         </li>
     </ul>
 </nav>
+
+@if (showSubnav()) {
+  <div class="subnavbar">
+    @for (tab of tabs; track tab) {
+      <button
+        type="button"
+        (click)="selectTab(tab)"
+        [class.active]="selectedTab() === tab"
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+}
 
 <app-menu [isOpen]="mobileMenuIsOpen" (close)="closeMenu()" />

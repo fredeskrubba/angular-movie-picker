@@ -67,6 +67,37 @@ h1 {
     gap: 1rem;
 }
 
+.subnavbar {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    background-color: var(--surface);
+    padding: 0.85rem 3rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid var(--accent);
+}
+
+.subnavbar button {
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.subnavbar button:hover {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.subnavbar button.active {
+    color: var(--accent);
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
 @media (max-width: 768px) {
     .desktop-nav {
         display: none;

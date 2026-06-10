@@ -21,7 +21,7 @@ export class Home implements OnInit {
   selectedMovie = signal<Movie | null>(null)
 
   ngOnInit(): void {
-    this.movieService.getAllMovies().subscribe((res: apiResponse) => {
+    this.movieService.getPopularMovies().subscribe((res: apiResponse) => {
       const movies: Movie[] = res.results;
       this.allMovies.set(movies);
 
