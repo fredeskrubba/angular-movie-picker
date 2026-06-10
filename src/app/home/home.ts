@@ -5,7 +5,7 @@ import { apiResponse } from '../models/DTOs/apiResponse';
 import { MovieCard } from '../components/home/movie-card/movie-card';
 import { MovieDetails } from '../components/home/movie-details/movie-details';
 import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
-
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -15,17 +15,32 @@ import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-ca
 })
 
 export class Home implements OnInit {
-  movieService = inject(Movies)
+  movieService = inject(Movies);
+  route = inject(ActivatedRoute);
+  router = inject(Router);
 
+
+  currentTab = signal('trending');
   allMovies = signal<Array<Movie>>([])
   selectedMovie = signal<Movie | null>(null)
 
   ngOnInit(): void {
-    this.movieService.getPopularMovies().subscribe((res: apiResponse) => {
-      const movies: Movie[] = res.results;
-      this.allMovies.set(movies);
-
+    this.router.navigate([], {
+      queryParams: { tab: "trending" },
+      queryParamsHandling: 'merge',
     });
+
+    this.route.queryParamMap.subscribe(params => {
+      const tab = params.get('tab') ?? 'trending';
+
+      console.log('Current tab:', tab);
+
+      this.currentTab.set(tab);
+
+    
+    });
+
+    this.fetchMovies(this.currentTab())
 
   }
   
@@ -51,5 +66,14 @@ export class Home implements OnInit {
 
       this.selectedMovie.set(movie);
     }
+  }
+
+
+  fetchMovies(category: string){
+    this.movieService.getPopularMovies().subscribe((res: apiResponse) => {
+      const movies: Movie[] = res.results;
+      this.allMovies.set(movies);
+
+    });
   }
 }

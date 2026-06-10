@@ -23,7 +23,7 @@
       <button
         type="button"
         (click)="selectTab(tab)"
-        [class.active]="selectedTab() === tab"
+        [class.active]="this.currentTab().replaceAll('_', ' ') === tab.toLowerCase()"
       >
         {{ tab }}
       </button>
