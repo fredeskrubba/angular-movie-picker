@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import { HttpClient } from '@angular/common/http';
-import { apiResponse } from '../models/DTOs/apiResponse';
+import { movieListResponse } from '../models/DTOs/movieListResponse';
 import { environment } from '../../environments/environtment';
 import { movieDetailsResponse } from '../models/DTOs/movieDetailsResponse';
 import { movieCastResponse } from '../models/DTOs/movieCastResponse';
@@ -20,7 +20,7 @@ export class Movies {
 
   getPopularMovies(){
     const url = "https://api.themoviedb.org/3/movie/popular"
-    return this.http.get<apiResponse>(url, {
+    return this.http.get<movieListResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }
@@ -29,7 +29,7 @@ export class Movies {
 
   getNowPlayingMovies(){
     const url = "https://api.themoviedb.org/3/movie/now_playing"
-    return this.http.get<apiResponse>(url, {
+    return this.http.get<movieListResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }
@@ -38,7 +38,7 @@ export class Movies {
 
   getTopRatedMovies(){
     const url = "https://api.themoviedb.org/3/movie/top_rated"
-    return this.http.get<apiResponse>(url, {
+    return this.http.get<movieListResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }
@@ -47,7 +47,7 @@ export class Movies {
 
   getUpcomingMovies(){
     const url = "https://api.themoviedb.org/3/movie/upcoming"
-    return this.http.get<apiResponse>(url, {
+    return this.http.get<movieListResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }
@@ -103,7 +103,7 @@ export class Movies {
   searchForMovie(searchQuery:string){
     const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}`
 
-    return this.http.get<apiResponse>(url, {
+    return this.http.get<movieListResponse>(url, {
       headers: {
         "Authorization": `Bearer ${environment.tmdbToken}`,
       }

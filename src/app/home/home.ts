@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
 import { Movies } from '../services/movies';
 import { Movie } from '../models/movie';
-import { apiResponse } from '../models/DTOs/apiResponse';
+import { movieListResponse } from '../models/DTOs/movieListResponse';
 import { MovieCard } from '../components/home/movie-card/movie-card';
 import { MovieDetails } from '../components/home/movie-details/movie-details';
 import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
@@ -70,7 +70,7 @@ export class Home implements OnInit {
 
 
   fetchMovies(category: string){
-    this.movieService.getPopularMovies().subscribe((res: apiResponse) => {
+    this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
       const movies: Movie[] = res.results;
       this.allMovies.set(movies);
 
