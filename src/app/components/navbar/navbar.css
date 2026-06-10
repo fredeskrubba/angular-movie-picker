@@ -102,6 +102,9 @@ h1 {
     .desktop-nav {
         display: none;
     }
+    .subnavbar {
+        display: none;
+    }
 }
     
 svg {
