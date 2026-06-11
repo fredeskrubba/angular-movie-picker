@@ -38,7 +38,7 @@ export class Navbar {
 
         this.currentTab.set(tab);
         this.currentPath.set(event.urlAfterRedirects.split('?')[0]);
-        console.log(this.currentTab())
+        
       });
   }
 

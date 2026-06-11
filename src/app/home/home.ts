@@ -23,6 +23,7 @@ export class Home implements OnInit {
   currentTab = signal('Now Playing');
   allMovies = signal<Array<Movie>>([])
   selectedMovie = signal<Movie | null>(null)
+  searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
 
   ngOnInit(): void {
     this.router.navigate([], {
@@ -35,6 +36,7 @@ export class Home implements OnInit {
 
       this.currentTab.set(tab);
       this.selectedMovie.set(null);
+      this.searchQuery.set("");
       this.fetchMovies(this.currentTab())
 
     });
@@ -55,13 +57,27 @@ export class Home implements OnInit {
    onSearchUpdated(sq: string) {
     this.searchQuery.set(sq);
     this.selectedMovie.set(null);
+
+    if (this.currentTab() !== 'all') {
+      return;
+    }
+
+    if (this.searchDebounceTimer) {
+      clearTimeout(this.searchDebounceTimer);
+    }
+
+    this.searchDebounceTimer = setTimeout(() => {
+      this.movieService.searchForMovie(this.searchQuery()).subscribe((res) => {
+        this.allMovies.set(res.results);
+      });
+    }, 300);
   }
 
   toggleDetails(movie: Movie) {
     if(this.selectedMovie()?.id == movie.id){
       this.selectedMovie.set(null)
     } else {
-
+      
       this.selectedMovie.set(movie);
     }
   }
