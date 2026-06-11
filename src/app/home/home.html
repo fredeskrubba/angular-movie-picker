@@ -23,6 +23,11 @@
                 }
             </div>
 
+        } @else if(items.length === 0 && this.searchQuery() !== ""){
+            <div class="search-error-container">
+                <h3>No movies found for this query</h3>
+                <img src="search_not_found.svg" alt="no movies image" class="search-not-found">
+            </div>
         } @else {
             <div class="no-movies-container">
                 <h3>Get your watchlist started by searching for movies by their title</h3>

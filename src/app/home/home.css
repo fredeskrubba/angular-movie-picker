@@ -28,7 +28,7 @@ main.show-details {
     overflow: hidden;
 }
 
-.home-content .no-movies-container {
+.home-content .no-movies-container, .home-content .search-error-container {
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -37,7 +37,7 @@ main.show-details {
     margin-top: 30px;
 }
 
-.home-content .no-movies-container h3 {
+.home-content .no-movies-container h3, .home-content .search-error-container h3 {
     color: var(--accent);
     font-size: 30px;
     font-weight: 400;
@@ -47,6 +47,13 @@ main.show-details {
     height: 300px;
     width: 500px;
 }
+
+.home-content .search-error-container img {
+    height: 200px;
+    width: 400px;
+    margin-top: 50px;
+}
+
 .movie-grid-desktop {
     display: grid;
     gap: 1rem;
