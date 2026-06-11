@@ -23,6 +23,37 @@ img {
   object-fit: cover;
 }
 
+.poster-placeholder {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 2 / 3;
+  background: linear-gradient(180deg, #0b0b0b, #141414);
+  color: #9CA3AF;
+}
+
+.placeholder-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.poster-icon {
+  width: 48px;
+  height: 48px;
+  color: #9CA3AF;
+}
+
+.placeholder-text {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: inherit;
+  text-align: center;
+}
+
 .overlay {
   position: absolute;
   inset: 0;

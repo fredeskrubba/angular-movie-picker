@@ -1,8 +1,9 @@
 import { Component, input, Output, EventEmitter } from '@angular/core';
+import { Icon } from '../../../shared/icon/icon';
 
 @Component({
   selector: 'app-movie-card',
-  imports: [],
+  imports: [Icon],
   templateUrl: './movie-card.html',
   styleUrl: './movie-card.css',
 })
