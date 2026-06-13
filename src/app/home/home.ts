@@ -45,7 +45,7 @@ export class Home implements OnInit {
 
 
   }
-  
+
   searchQuery = signal<string>('');
 
   items = computed(() => {
@@ -57,10 +57,12 @@ export class Home implements OnInit {
   });
 
    onSearchUpdated(sq: string) {
+    this.moviesLoading.set(true);
     this.searchQuery.set(sq);
     this.selectedMovie.set(null);
 
     if (this.currentTab() !== 'all') {
+      this.moviesLoading.set(false);
       return;
     }
 
@@ -71,6 +73,7 @@ export class Home implements OnInit {
     this.searchDebounceTimer = setTimeout(() => {
       this.movieService.searchForMovie(this.searchQuery()).subscribe((res) => {
         this.allMovies.set(res.results);
+        this.moviesLoading.set(false);
       });
     }, 300);
   }
@@ -87,23 +90,26 @@ export class Home implements OnInit {
 
   fetchMovies(category: string){
     this.moviesLoading.set(true);
-    console.log(this.moviesLoading())
+    
     switch (this.currentTab().toLocaleLowerCase()) {
     case 'now_playing':
       this.movieService.getNowPlayingMovies().subscribe((res) => {
         this.allMovies.set(res.results);
+        this.moviesLoading.set(false);
       });
       break;
 
     case 'upcoming':
       this.movieService.getUpcomingMovies().subscribe((res) => {
         this.allMovies.set(res.results);
+        this.moviesLoading.set(false);
       });
       break;
 
     case 'top_rated':
       this.movieService.getTopRatedMovies().subscribe((res) => {
         this.allMovies.set(res.results);
+        this.moviesLoading.set(false);
       });
       break;
 
@@ -111,21 +117,23 @@ export class Home implements OnInit {
       this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
         const movies: Movie[] = res.results;
         this.allMovies.set(movies);
+        this.moviesLoading.set(false);
       });
       break;
 
     case 'all':
       
       this.allMovies.set([]);
+      this.moviesLoading.set(false);
       break;
 
     default:
       this.movieService.getPopularMovies().subscribe((res: movieListResponse) => {
         const movies: Movie[] = res.results;
         this.allMovies.set(movies);
+        this.moviesLoading.set(false);
       });
       break;
   }
-    this.moviesLoading.set(false);
   }
 }
