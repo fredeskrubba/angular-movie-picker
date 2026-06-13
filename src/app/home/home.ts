@@ -6,10 +6,11 @@ import { MovieCard } from '../components/home/movie-card/movie-card';
 import { MovieDetails } from '../components/home/movie-details/movie-details';
 import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
 import { Router, ActivatedRoute } from '@angular/router';
+import { CardSkeleton } from '../components/loading/card-skeleton/card-skeleton';
 
 @Component({
   selector: 'app-home',
-  imports: [MovieCard, MovieDetails, MovieCardMobile],
+  imports: [MovieCard, MovieDetails, MovieCardMobile, CardSkeleton],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -24,6 +25,7 @@ export class Home implements OnInit {
   allMovies = signal<Array<Movie>>([])
   selectedMovie = signal<Movie | null>(null)
   searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
+  moviesLoading = signal(true);
 
   ngOnInit(): void {
     this.router.navigate([], {
@@ -84,7 +86,8 @@ export class Home implements OnInit {
 
 
   fetchMovies(category: string){
-
+    this.moviesLoading.set(true);
+    console.log(this.moviesLoading())
     switch (this.currentTab().toLocaleLowerCase()) {
     case 'now_playing':
       this.movieService.getNowPlayingMovies().subscribe((res) => {
@@ -123,6 +126,6 @@ export class Home implements OnInit {
       });
       break;
   }
-
+    this.moviesLoading.set(false);
   }
 }

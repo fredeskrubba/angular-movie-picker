@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { Movie } from '../models/movie';
 import { HttpClient } from '@angular/common/http';
 import { movieListResponse } from '../models/DTOs/movieListResponse';
-import { environment } from '../../environments/environtment';
+import { environment } from '../../environments/environment';
 import { movieDetailsResponse } from '../models/DTOs/movieDetailsResponse';
 import { movieCastResponse } from '../models/DTOs/movieCastResponse';
 import { movieStreamResponse } from '../models/DTOs/movieStreamResponse';

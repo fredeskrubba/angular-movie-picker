@@ -5,37 +5,46 @@
             <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)" value="{{this.searchQuery()}}">
         </div>
         
-        @if(items().length > 0){
-            <div class="movie-grid-desktop">
-                @for (movie of items(); track movie.id){
-                    <app-movie-card
-                        [title]="movie.title"
-                        [posterURL]="movie.poster_path"
-                        (detailsClicked)="toggleDetails(movie)"
-                        [selectedMovie]="movie.id === selectedMovie()?.id"
-                    >
-                    </app-movie-card>
+        @if(moviesLoading()){
+            <div class="movie-grid-desktop">    
+                @for (item of [].constructor(20); track $index) {
+                    <app-card-skeleton></app-card-skeleton>
                 }
-            </div>
-            <div class="movie-grid-mobile">
-                @for (movie of items(); track movie.id){
-                    <app-movie-card-mobile [movieInfo]="movie"></app-movie-card-mobile>
-                }
-            </div>
-
-        } @else if(items.length === 0 && this.searchQuery() !== ""){
-            <div class="search-error-container">
-                <h3>No movies found for this query</h3>
-                <img src="search_not_found.svg" alt="no movies image" class="search-not-found">
             </div>
         } @else {
-            <div class="no-movies-container">
-                <h3>Get your watchlist started by searching for movies by their title</h3>
-                <img src="search_for_movies.svg" alt="no movies image" class="no-movies">
-            </div>
+            @if(items().length > 0){
+                <div class="movie-grid-desktop">
+                    @for (movie of items(); track movie.id){
+                        <app-movie-card
+                            [title]="movie.title"
+                            [posterURL]="movie.poster_path"
+                            (detailsClicked)="toggleDetails(movie)"
+                            [selectedMovie]="movie.id === selectedMovie()?.id"
+                        >
+                        </app-movie-card>
+                    }
+                </div>
+                <div class="movie-grid-mobile">
+                    @for (movie of items(); track movie.id){
+                        <app-movie-card-mobile [movieInfo]="movie"></app-movie-card-mobile>
+                    }
+                </div>
+    
+            } @else if(items.length === 0 && this.searchQuery() !== ""){
+                <div class="search-error-container">
+                    <h3>No movies found for this query</h3>
+                    <img src="search_not_found.svg" alt="no movies image" class="search-not-found">
+                </div>
+            } @else {
+                <div class="no-movies-container">
+                    <h3>Get your watchlist started by searching for movies by their title</h3>
+                    <img src="search_for_movies.svg" alt="no movies image" class="no-movies">
+                </div>
+            }
+            
+            
         }
     </div>
-    
     @if(selectedMovie()){
       <app-movie-details [selectedMovie]="selectedMovie()"/>
     }
