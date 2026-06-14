@@ -7,10 +7,12 @@ import { MovieDetails } from '../components/home/movie-details/movie-details';
 import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CardSkeleton } from '../components/loading/card-skeleton/card-skeleton';
+import { SearchToggle } from '../components/mobile/search-toggle/search-toggle';
+import { SearchMenu } from '../components/mobile/search-menu/search-menu';
 
 @Component({
   selector: 'app-home',
-  imports: [MovieCard, MovieDetails, MovieCardMobile, CardSkeleton],
+  imports: [MovieCard, MovieDetails, MovieCardMobile, CardSkeleton, SearchToggle, SearchMenu],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -24,8 +26,12 @@ export class Home implements OnInit {
   currentTab = signal('Now Playing');
   allMovies = signal<Array<Movie>>([])
   selectedMovie = signal<Movie | null>(null)
+  mobileSearchMenuIsOpen = signal(false);
   searchDebounceTimer: ReturnType<typeof setTimeout> | null = null;
   moviesLoading = signal(true);
+
+
+
 
   ngOnInit(): void {
     this.router.navigate([], {

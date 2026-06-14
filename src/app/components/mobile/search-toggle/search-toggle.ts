@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Icon } from '../../../shared/icon/icon';
 
 @Component({
@@ -8,7 +8,10 @@ import { Icon } from '../../../shared/icon/icon';
   styleUrl: './search-toggle.css',
 })
 export class SearchToggle {
+  @Input() isOpen = false;
+  @Output() toggleSearch = new EventEmitter<void>();
+
   onToggle(): void {
-    console.log('toggle');
+    this.toggleSearch.emit();
   }
 }

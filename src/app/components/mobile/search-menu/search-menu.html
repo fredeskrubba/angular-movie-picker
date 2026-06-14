@@ -1,11 +1,14 @@
-<div class="search-menu" [class.open]="isOpen()">
+<div class="search-menu" [class.open]="isOpen">
     <div class="search-body">
         <label class="search-input-wrap" aria-label="Search">
             <app-icon name="search-icon" class="search-input-icon" />
             <input
+                #searchQuery
                 type="text"
                 class="search-input"
                 placeholder="Search for a movie..."
+                (input)="updateSearchQuery($event.target.value)"
+                value="{{this.searchQuery()}}"
             />
         </label>
     </div>

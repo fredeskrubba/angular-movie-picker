@@ -48,5 +48,15 @@
     @if(selectedMovie()){
       <app-movie-details [selectedMovie]="selectedMovie()"/>
     }
+
+    <app-search-toggle
+      [isOpen]="mobileSearchMenuIsOpen()"
+      (toggleSearch)="mobileSearchMenuIsOpen.set(!mobileSearchMenuIsOpen())"
+    />
+    <app-search-menu
+      [isOpen]="mobileSearchMenuIsOpen()"
+      (closed)="mobileSearchMenuIsOpen.set(false)"
+      (search)="onSearchUpdated($event)"
+    />
 </main>
 
