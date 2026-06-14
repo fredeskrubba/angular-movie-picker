@@ -18,7 +18,19 @@
 </nav>
 
 @if (showSubnav()) {
-  <div class="subnavbar">
+  <div class="subnavbar desktop-subnavbar">
+    @for (tab of tabs; track tab) {
+      <button
+        type="button"
+        (click)="selectTab(tab)"
+        [class.active]="this.currentTab().replaceAll('_', ' ') === tab.toLowerCase()"
+      >
+        {{ tab }}
+      </button>
+    }
+  </div>
+
+  <div class="subnavbar mobile-subnavbar">
     @for (tab of tabs; track tab) {
       <button
         type="button"

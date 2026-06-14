@@ -127,7 +127,7 @@ main.show-details {
 @media (max-width: 1023px) {
 
     .home-content {
-        padding-top: 6.5rem;
+        padding-top: 2.5rem;
     }
 
     .desktop-searchbar {
@@ -144,5 +144,25 @@ main.show-details {
         justify-content: center;
         width: 100%;
         overflow-y: auto;
+    }
+
+    .home-content .no-movies-container, .home-content .search-error-container {
+        margin-top: 10px;
+    }
+
+    .home-content .no-movies-container h3, .home-content .search-error-container h3 {
+        font-size: 15px;
+        font-weight: 400;
+    }
+
+    .home-content .no-movies-container img {
+        height: 150px;
+        width: 300px;
+    }
+
+    .home-content .search-error-container img {
+        height: 200px;
+        width: 200px;
+        margin-top: 50px;
     }
 }

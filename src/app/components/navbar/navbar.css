@@ -77,6 +77,14 @@ h1 {
     border-top: 1px solid var(--accent);
 }
 
+.desktop-subnavbar {
+    display: flex;
+}
+
+.mobile-subnavbar {
+    display: none;
+}
+
 .subnavbar button {
     border: none;
     background: transparent;
@@ -102,8 +110,36 @@ h1 {
     .desktop-nav {
         display: none;
     }
-    .subnavbar {
+
+    .desktop-subnavbar {
         display: none;
+    }
+
+    .mobile-subnavbar {
+        display: flex;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        padding: 0.75rem 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+        scrollbar-width: thin;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-subnavbar button {
+        flex: 0 0 auto;
+        font-size: 0.95rem;
+        padding: 0.45rem 0.8rem;
+        border-radius: 0;
+        border-bottom: 2px solid transparent;
+        background: transparent;
+    }
+
+    .mobile-subnavbar button.active {
+        color: var(--accent);
+        background: transparent;
+        border-bottom-color: var(--accent);
     }
 }
     
@@ -117,10 +153,11 @@ svg {
 @media (max-width: 768px) {
     nav {
         padding: 1.5rem 2rem;
-        position: fixed;
+        position: sticky;
         top: 0;
         right: 0;
         left: 0;
+        z-index: 1000;
     }
 
     .nav-icon {
