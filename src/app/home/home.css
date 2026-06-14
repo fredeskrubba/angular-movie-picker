@@ -125,6 +125,11 @@ main.show-details {
 
 
 @media (max-width: 1023px) {
+
+    .home-content {
+        padding-top: 6.5rem;
+    }
+
     .desktop-searchbar {
         display: none;
     }

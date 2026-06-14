@@ -4,7 +4,7 @@
     <div class="menu-content" (click)="$event.stopPropagation()">
       <button class="close-btn" (click)="closeMenu()">×</button>
       <ul>
-        <li routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        <li routerLink="/browse" routerLinkActive="active" (click)="closeMenu()">
           <span class="flex-container">
             <app-icon name="app-icon" class="movie-icon" />
             Find movie
