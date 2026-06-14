@@ -5,8 +5,16 @@ export const routes: Routes = [
     {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'browse'
+    redirectTo: 'login'
     },
+    {
+    path: "login",
+    pathMatch: "full",
+    loadComponent: () => {
+        return import("./login/login").then(
+            m => m.Login
+        )
+    }},
     {
     path: "browse",
     pathMatch: "full",
