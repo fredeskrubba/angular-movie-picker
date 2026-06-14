@@ -11,6 +11,12 @@
                     <app-card-skeleton></app-card-skeleton>
                 }
             </div>
+
+            <div class="movie-grid-mobile">    
+                @for (item of [].constructor(20); track $index) {
+                    <app-mobile-card-skeleton></app-mobile-card-skeleton>
+                }
+            </div>
         } @else {
             @if(items().length > 0){
                 <div class="movie-grid-desktop">

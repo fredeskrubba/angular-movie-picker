@@ -19,9 +19,13 @@ export class SearchMenu {
     this.searchQuery.set(input);
   }
 
+  closeMenu(): void {
+    this.closed.emit();
+  }
+
   searchForMovie(): void {
     this.search.emit(this.searchQuery());
     this.searchQuery.set("");
-    this.closed.emit();
+    this.closeMenu();
   }
 }

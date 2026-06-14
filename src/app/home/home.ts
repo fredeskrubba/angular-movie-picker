@@ -9,10 +9,11 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CardSkeleton } from '../components/loading/card-skeleton/card-skeleton';
 import { SearchToggle } from '../components/mobile/search-toggle/search-toggle';
 import { SearchMenu } from '../components/mobile/search-menu/search-menu';
+import { MobileCardSkeleton } from '../components/loading/mobile-card-skeleton/mobile-card-skeleton';
 
 @Component({
   selector: 'app-home',
-  imports: [MovieCard, MovieDetails, MovieCardMobile, CardSkeleton, SearchToggle, SearchMenu],
+  imports: [MovieCard, MovieDetails, MovieCardMobile, CardSkeleton, SearchToggle, SearchMenu, MobileCardSkeleton],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
