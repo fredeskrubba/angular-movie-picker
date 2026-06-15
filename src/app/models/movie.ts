@@ -7,5 +7,6 @@ export type Movie = {
     release_date?: string;
     runtime?: number;
     video?: boolean;
+    isWatched?: boolean;
     genres?: { id: number; name: string }[]
 }

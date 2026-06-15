@@ -1,1 +1,37 @@
-
+<main class="watchlist-container">
+    <div class="filter-section">
+        <div class="stats">
+            <div class="stat">
+                <h4>Total movies</h4>
+                <p>{{ getWatchlist() ? getWatchlist().length : 0 }}</p>
+            </div>
+            <div class="stat">
+                <h4>Watched</h4>
+                <p>{{ getWatchlist()?.filter(m => m.isWatched).length || 0 }}</p>
+            </div>
+            <div class="stat">
+                <h4>Not watched</h4>
+                <p>{{ getWatchlist()?.filter(m => !m.isWatched).length || 0 }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="movie-section">
+        @if (getWatchlist() ? getWatchlist().length > 0 : false) {
+        
+            
+        
+                @for (movie of getWatchlist(); track movie.id) {
+        
+                    <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+        
+                }
+        
+            
+        
+        } @else {
+        
+            <p class="empty">Your watchlist is empty.</p>
+        
+        }
+    </div>
+</main>

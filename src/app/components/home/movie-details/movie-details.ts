@@ -118,11 +118,14 @@ export class MovieDetails {
     const watchlist: Movie[] = Array.isArray(currentWatchlist) ? currentWatchlist : [];
 
     if (!watchlist.some(item => item.id === movie.id)) {
-      watchlist.push(movie);
+      watchlist.push({
+       ...movie,
+       isWatched: false 
+      });
       this.storageService.setItem('Watchlist', watchlist);
     }
 
     
-    console.log(localStorage.getItem("Watchlist"));
+    
   }
 }

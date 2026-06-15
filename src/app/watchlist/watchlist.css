@@ -1,0 +1,53 @@
+.watchlist-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    padding: 1rem;
+}
+
+.filter-section {
+    
+}
+
+.stats {
+    display: flex;
+    gap: 1rem;
+}
+
+.stats .stat {
+    background-color: var(--surface);
+    color: var(--accent);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-width: 200px;
+}
+
+.stats .stat:hover {
+    border: 1px solid var(--accent);
+    cursor: pointer;
+}
+
+.stats .stat .active {
+    border: 1px solid var(--accent);
+}
+
+.stats .stat h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.movie-section {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    align-items: start;
+}
+
+.movie-section > app-watchlist-movie-card {
+    width: 100%;
+}
