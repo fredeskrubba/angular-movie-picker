@@ -1,4 +1,4 @@
-import { Component, input, inject, effect, linkedSignal, signal, computed } from '@angular/core';
+import { Component, input, inject, effect, linkedSignal, signal } from '@angular/core';
 import { Icon } from '../../../shared/icon/icon';
 import { Movie } from '../../../models/movie';
 import { Movies } from '../../../services/movies';
