@@ -1,6 +1,6 @@
 import { Component, input, inject} from '@angular/core';
 import { Movie } from '../../../../../models/movie';
-import { Icon } from '../../../../../components/icon/icon';
+import { Icon } from '../../../../../global-components/icon/icon';
 import { Router } from '@angular/router';
 
 @Component({

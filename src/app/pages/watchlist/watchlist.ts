@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import {StorageService} from '../../services/storage'
 import {OnInit} from '@angular/core';
-import { WatchlistMovieCard } from '../../components/watchlist/watchlist-movie-card/watchlist-movie-card';
+import { WatchlistMovieCard } from './components/watchlist-movie-card/watchlist-movie-card';
 import { WatchlistFilter } from './watchlist.enum';
 
 @Component({

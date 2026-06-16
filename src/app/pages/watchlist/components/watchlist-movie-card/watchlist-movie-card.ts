@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Movie } from '../../../models/movie';
-import { Icon } from '../../icon/icon';
+import { Movie } from '../../../../models/movie';
+import { Icon } from '../../../../global-components/icon/icon';
 
 @Component({
   selector: 'app-watchlist-movie-card',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Navbar } from '../../components/navbar/navbar';
+import { Navbar } from '../../global-components/navbar/navbar';
 import { RouterOutlet } from '@angular/router';
 
 @Component({

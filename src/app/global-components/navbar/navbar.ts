@@ -3,7 +3,7 @@ import { Icon } from '../icon/icon';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { filter } from 'rxjs';
-import { Menu } from '../../components/navbar/mobile/menu/menu';
+import { Menu } from './mobile/menu/menu';
 
 @Component({
   selector: 'app-navbar',

@@ -6,7 +6,7 @@ import { forkJoin } from 'rxjs';
 import { CastMember } from '../../../../../models/castMember';
 import { Director } from '../../../../../models/director';
 import { StreamProvider } from '../../../../../models//streamProvider';
-import { Icon } from '../../../../../components/icon/icon';
+import { Icon } from '../../../../../global-components/icon/icon';
 import { getProviderIcon } from '../../../../../../helpers/getProviderIcon';
 
 @Component({

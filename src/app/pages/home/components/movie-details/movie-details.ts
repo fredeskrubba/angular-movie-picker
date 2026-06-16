@@ -1,5 +1,5 @@
 import { Component, input, inject, effect, linkedSignal, signal } from '@angular/core';
-import { Icon } from '../../../../components/icon/icon';
+import { Icon } from '../../../../global-components/icon/icon';
 import { Movie } from '../../../../models/movie';
 import { Movies } from '../../../../services/movies';
 import { movieDetailsResponse } from '../../../../models/DTOs/movieDetailsResponse';
