@@ -17,17 +17,24 @@
     </div>
     <div class="movie-section">
         @if (getWatchlist() ? getWatchlist().length > 0 : false) {
-        
             
-        
-                @for (movie of getWatchlist(); track movie.id) {
-        
-                    <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-        
+            @switch (currentFilter()) {
+                @case (watchlistFilter.All) {
+                    @for (movie of getWatchlist(); track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                    }
                 }
-        
-            
-        
+                @case (watchlistFilter.Watched) {
+                    @for (movie of getWatchlist()?.filter(m => m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                    }
+                }
+                @case (watchlistFilter.NotWatched) {
+                    @for (movie of getWatchlist()?.filter(m => !m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                    }
+                }
+            }
         } @else {
         
             <p class="empty">Your watchlist is empty.</p>

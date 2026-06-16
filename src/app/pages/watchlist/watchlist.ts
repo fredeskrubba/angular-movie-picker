@@ -20,7 +20,6 @@ export class Watchlist implements OnInit {
 
 
   getWatchlist() {
-    
     return this.storageService.getItem("Watchlist");
   }
 
