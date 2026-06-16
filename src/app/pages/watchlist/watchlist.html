@@ -1,15 +1,15 @@
 <main class="watchlist-container">
     <div class="filter-section">
         <div class="stats">
-            <div class="stat">
+            <div class="stat" (click)="changeFilter(watchlistFilter.All)" [class.active]="currentFilter() === watchlistFilter.All" aria-label="All movies">
                 <h4>Total movies</h4>
                 <p>{{ getWatchlist() ? getWatchlist().length : 0 }}</p>
             </div>
-            <div class="stat">
+            <div class="stat" (click)="changeFilter(watchlistFilter.Watched)" [class.active]="currentFilter() === watchlistFilter.Watched" aria-label="Watched movies">
                 <h4>Watched</h4>
                 <p>{{ getWatchlist()?.filter(m => m.isWatched).length || 0 }}</p>
             </div>
-            <div class="stat">
+            <div class="stat" (click)="changeFilter(watchlistFilter.NotWatched)" [class.active]="currentFilter() === watchlistFilter.NotWatched" aria-label="Not watched movies">
                 <h4>Not watched</h4>
                 <p>{{ getWatchlist()?.filter(m => !m.isWatched).length || 0 }}</p>
             </div>

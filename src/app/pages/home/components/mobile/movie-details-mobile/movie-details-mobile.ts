@@ -1,13 +1,13 @@
 import { Component, inject, signal } from '@angular/core';
-import { Movies } from '../services/movies';
+import { Movies } from '../../../../../services/movies';
 import { ActivatedRoute } from '@angular/router';
-import { Movie } from '../models/movie';
+import { Movie } from '../../../../../models/movie';
 import { forkJoin } from 'rxjs';
-import { CastMember } from '../models/castMember';
-import { Director } from '../models/director';
-import { StreamProvider } from '../models/streamProvider';
-import { Icon } from '../shared/icon/icon';
-import { getProviderIcon } from '../../helpers/getProviderIcon';
+import { CastMember } from '../../../../../models/castMember';
+import { Director } from '../../../../../models/director';
+import { StreamProvider } from '../../../../../models//streamProvider';
+import { Icon } from '../../../../../components/icon/icon';
+import { getProviderIcon } from '../../../../../../helpers/getProviderIcon';
 
 @Component({
   selector: 'app-movie-details-mobile',

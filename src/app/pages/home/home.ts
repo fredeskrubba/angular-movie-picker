@@ -1,15 +1,15 @@
 import { Component, inject, OnInit, signal, computed } from '@angular/core';
-import { Movies } from '../services/movies';
-import { Movie } from '../models/movie';
-import { movieListResponse } from '../models/DTOs/movieListResponse';
-import { MovieCard } from '../components/home/movie-card/movie-card';
-import { MovieDetails } from '../components/home/movie-details/movie-details';
-import { MovieCardMobile } from '../components/mobile/movie-card-mobile/movie-card-mobile';
+import { Movies } from "../../services/movies";
+import { Movie } from '../../models/movie';
+import { movieListResponse } from '../../models/DTOs/movieListResponse';
+import { MovieCard } from './components/movie-card/movie-card';
+import { MovieDetails } from './components/movie-details/movie-details';
+import { MovieCardMobile } from './components/mobile/movie-card-mobile/movie-card-mobile';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CardSkeleton } from '../components/loading/card-skeleton/card-skeleton';
-import { SearchToggle } from '../components/mobile/search-toggle/search-toggle';
-import { SearchMenu } from '../components/mobile/search-menu/search-menu';
-import { MobileCardSkeleton } from '../components/loading/mobile-card-skeleton/mobile-card-skeleton';
+import { CardSkeleton } from './components/loading/card-skeleton/card-skeleton';
+import { SearchToggle } from './components/mobile/search-toggle/search-toggle';
+import { SearchMenu } from './components/mobile/search-menu/search-menu';
+import { MobileCardSkeleton } from './components/loading/mobile-card-skeleton/mobile-card-skeleton';
 
 @Component({
   selector: 'app-home',

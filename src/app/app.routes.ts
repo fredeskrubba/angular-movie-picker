@@ -19,7 +19,7 @@ export const routes: Routes = [
       {
         path: 'login',
         loadComponent: () =>
-          import('./login/login').then(
+          import('./pages/login/login').then(
             m => m.Login
           )
       }
@@ -38,7 +38,7 @@ export const routes: Routes = [
       {
         path: 'browse',
         loadComponent: () =>
-          import('./home/home').then(
+          import('./pages/home/home').then(
             m => m.Home
           )
       },
@@ -46,7 +46,7 @@ export const routes: Routes = [
       {
         path: 'watchlist',
         loadComponent: () =>
-          import('./watchlist/watchlist').then(
+          import('./pages/watchlist/watchlist').then(
             m => m.Watchlist
           )
       },
@@ -54,7 +54,7 @@ export const routes: Routes = [
       {
         path: 'about',
         loadComponent: () =>
-          import('./about/about').then(
+          import('./pages/about/about').then(
             m => m.About
           )
       },
@@ -62,7 +62,7 @@ export const routes: Routes = [
       {
         path: 'movies/:id',
         loadComponent: () =>
-          import('./movie-details-mobile/movie-details-mobile').then(
+          import('./pages/home/components/mobile/movie-details-mobile/movie-details-mobile').then(
             m => m.MovieDetailsMobile
           )
       }

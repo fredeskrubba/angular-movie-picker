@@ -1,17 +1,17 @@
 import { Component, input, inject, effect, linkedSignal, signal } from '@angular/core';
-import { Icon } from '../../../shared/icon/icon';
-import { Movie } from '../../../models/movie';
-import { Movies } from '../../../services/movies';
-import { movieDetailsResponse } from '../../../models/DTOs/movieDetailsResponse';
-import { movieCastResponse } from '../../../models/DTOs/movieCastResponse';
-import { CastMember } from '../../../models/castMember';
-import { Director } from '../../../models/director';
-import { movieStreamResponse } from '../../../models/DTOs/movieStreamResponse';
-import { StreamProvider } from '../../../models/streamProvider';
-import { MovieDetailsSkeleton } from '../../loading/movie-details-skeleton/movie-details-skeleton';
+import { Icon } from '../../../../components/icon/icon';
+import { Movie } from '../../../../models/movie';
+import { Movies } from '../../../../services/movies';
+import { movieDetailsResponse } from '../../../../models/DTOs/movieDetailsResponse';
+import { movieCastResponse } from '../../../../models/DTOs/movieCastResponse';
+import { CastMember } from '../../../../models/castMember';
+import { Director } from '../../../../models/director';
+import { movieStreamResponse } from '../../../../models/DTOs/movieStreamResponse';
+import { StreamProvider } from '../../../../models/streamProvider';
+import { MovieDetailsSkeleton } from '../loading/movie-details-skeleton/movie-details-skeleton';
 import { forkJoin } from 'rxjs';
-import { getProviderIcon } from '../../../../helpers/getProviderIcon';
-import { StorageService } from '../../../services/storage';
+import { getProviderIcon } from '../../../../../helpers/getProviderIcon';
+import { StorageService } from '../../../../services/storage';
 
 @Component({
   selector: 'app-movie-details',

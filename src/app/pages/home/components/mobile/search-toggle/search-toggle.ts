@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Icon } from '../../../shared/icon/icon';
+import { Icon } from '../../../../../components/icon/icon';
 
 @Component({
   selector: 'app-search-toggle',

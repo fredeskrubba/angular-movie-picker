@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { Icon } from '../../../shared/icon/icon';
+import { Icon } from '../../../icon/icon';
 
 @Component({
   selector: 'app-menu',
