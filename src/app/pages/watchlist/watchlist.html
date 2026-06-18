@@ -14,31 +14,47 @@
                 <p>{{ getWatchlist()?.filter(m => !m.isWatched).length || 0 }}</p>
             </div>
         </div>
+        <div class="filter-box">
+
+        </div>
     </div>
     <div class="movie-section">
-        @if (getWatchlist() ? getWatchlist().length > 0 : false) {
+
+        <div class="action-header">
+            <div class="watchlist-searchbar">
+                <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)" value="{{this.searchQuery()}}">
+            </div>
+            <button class="random-button">
+                <app-icon name="random-icon"/>
+                Add Random movie
+            </button>
+        </div>
+
+        <div class="movie-grid">
+            @if (getWatchlist() ? getWatchlist().length > 0 : false) {
+                
+                @switch (currentFilter()) {
+                    @case (watchlistFilter.All) {
+                        @for (movie of getWatchlist(); track movie.id) {
+                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                        }
+                    }
+                    @case (watchlistFilter.Watched) {
+                        @for (movie of getWatchlist()?.filter(m => m.isWatched) || []; track movie.id) {
+                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                        }
+                    }
+                    @case (watchlistFilter.NotWatched) {
+                        @for (movie of getWatchlist()?.filter(m => !m.isWatched) || []; track movie.id) {
+                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                        }
+                    }
+                }
+            } @else {
             
-            @switch (currentFilter()) {
-                @case (watchlistFilter.All) {
-                    @for (movie of getWatchlist(); track movie.id) {
-                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                    }
-                }
-                @case (watchlistFilter.Watched) {
-                    @for (movie of getWatchlist()?.filter(m => m.isWatched) || []; track movie.id) {
-                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                    }
-                }
-                @case (watchlistFilter.NotWatched) {
-                    @for (movie of getWatchlist()?.filter(m => !m.isWatched) || []; track movie.id) {
-                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                    }
-                }
+                <p class="empty">Your watchlist is empty.</p>
+            
             }
-        } @else {
-        
-            <p class="empty">Your watchlist is empty.</p>
-        
-        }
+        </div>
     </div>
 </main>

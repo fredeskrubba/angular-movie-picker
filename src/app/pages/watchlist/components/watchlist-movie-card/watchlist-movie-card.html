@@ -1,19 +1,32 @@
-<article class="watchlist-movie-card">
+<article class="watchlist-movie-card" (click)="isOpen.set(!isOpen())">
   <img [src]="'https://image.tmdb.org/t/p/w500' + watchlistMovie().poster_path" alt="{{ watchlistMovie().title }} poster" class="movie-poster">
 
-  <div class="movie-meta">
+  <div class="movie-meta {{isOpen() ? 'expanded' : ''}}">
     <div class="movie-copy">
       <h2>{{ watchlistMovie().title }}</h2>
     </div>
 
-    <div class="movie-actions" aria-label="Movie actions">
-        <span class="flex" aria-label="Favorite">
-            <p>5</p>
-            <app-icon name="star-icon" class="rating-icon"></app-icon>
+    @if (isOpen()) {
+      <div class="expanded-menu">
+        <span>
+          <p>Seen</p>
         </span>
-        <span class="flex" aria-label="Watched">
-            <app-icon name="checkmark-icon" class="status-icon"></app-icon>
+        <span>
+          <p>My Rating</p>
         </span>
-    </div>
+        <button class="remove-button" (click)="removeFromWatchlist($event)">Remove from watchlist</button>
+      </div>
+    } @else {
+      <div class="menu">
+          <span class="flex" aria-label="Favorite">
+              <p>5</p>
+              <app-icon name="star-icon" class="rating-icon"></app-icon>
+          </span>
+          <span class="flex" aria-label="Watched">
+              <app-icon name="checkmark-icon" class="status-icon"></app-icon>
+          </span>
+      </div>
+
+    }
   </div>
 </article>

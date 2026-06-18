@@ -1,13 +1,15 @@
 .watchlist-container {
     display: grid;
-    grid-template-columns: 2fr 4fr;
+    grid-template-columns: 1fr 2fr;
     gap: 1rem;
     margin-bottom: 1rem;
     padding: 1rem;
 }
 
 .filter-section {
-    
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .stats {
@@ -24,6 +26,7 @@
     align-items: center;
     flex-direction: column;
     min-width: 200px;
+    height: 60px;
 }
 
 .stats .stat:hover {
@@ -37,17 +40,93 @@
 
 .stats .stat h4 {
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: bold;
 }
 
-.movie-section {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1rem;
-    align-items: start;
+.stats .stat p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 300;
 }
 
-.movie-section > app-watchlist-movie-card {
+.filter-box {
+    padding: 20px;
+    background-color: var(--surface);
+    border-radius: 4px;
+    height: 400px;
+}
+
+.movie-section {
+   display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    
+}
+
+.action-header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    gap: 1rem;
+}
+
+.watchlist-searchbar {
+    height: 100%;
+}
+
+.watchlist-searchbar input {
+    flex: 4;
+    padding: 0.5rem 1rem;
+    background-color: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--accent);
+    font-family: var(--main-font);
+    font-size: 1.2rem;
+    outline: none;
+    height: 100%;
     width: 100%;
 }
+
+.watchlist-searchbar input::placeholder {
+    color: var(--accent);
+    font-weight: 300;
+}
+
+.random-button {
+    height: 100%;
+    font-size: 18px;
+    font-weight: 600;
+    border: 1px solid var(--accent);
+    background-color: var(--surface);
+    color: var(--accent);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.random-button app-icon {
+    fill: var(--accent);
+}
+
+.random-button:hover {
+    cursor: pointer;
+    background-color: var(--accent);
+    color: var(--surface);
+
+}
+
+.random-button:hover app-icon {
+    fill: var(--surface);
+}
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
