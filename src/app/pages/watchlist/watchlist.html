@@ -3,15 +3,15 @@
         <div class="stats">
             <div class="stat" (click)="changeFilter(watchlistFilter.All)" [class.active]="currentFilter() === watchlistFilter.All" aria-label="All movies">
                 <h4>Total movies</h4>
-                <p>{{ getWatchlist() ? getWatchlist().length : 0 }}</p>
+                <p>{{ this.items() ? this.items().length : 0 }}</p>
             </div>
             <div class="stat" (click)="changeFilter(watchlistFilter.Watched)" [class.active]="currentFilter() === watchlistFilter.Watched" aria-label="Watched movies">
                 <h4>Watched</h4>
-                <p>{{ getWatchlist()?.filter(m => m.isWatched).length || 0 }}</p>
+                <p>{{ this.items().filter(m => m.isWatched).length || 0 }}</p>
             </div>
             <div class="stat" (click)="changeFilter(watchlistFilter.NotWatched)" [class.active]="currentFilter() === watchlistFilter.NotWatched" aria-label="Not watched movies">
                 <h4>Not watched</h4>
-                <p>{{ getWatchlist()?.filter(m => !m.isWatched).length || 0 }}</p>
+                <p>{{ this.items().filter(m => !m.isWatched).length || 0 }}</p>
             </div>
         </div>
         <div class="filter-box">
@@ -31,21 +31,21 @@
         </div>
 
         <div class="movie-grid">
-            @if (getWatchlist() ? getWatchlist().length > 0 : false) {
+            @if (this.items() ? this.items().length > 0 : false) {
                 
                 @switch (currentFilter()) {
                     @case (watchlistFilter.All) {
-                        @for (movie of getWatchlist(); track movie.id) {
+                        @for (movie of this.items(); track movie.id) {
                             <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                         }
                     }
                     @case (watchlistFilter.Watched) {
-                        @for (movie of getWatchlist()?.filter(m => m.isWatched) || []; track movie.id) {
+                        @for (movie of this.items()?.filter(m => m.isWatched) || []; track movie.id) {
                             <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                         }
                     }
                     @case (watchlistFilter.NotWatched) {
-                        @for (movie of getWatchlist()?.filter(m => !m.isWatched) || []; track movie.id) {
+                        @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
                             <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                         }
                     }
