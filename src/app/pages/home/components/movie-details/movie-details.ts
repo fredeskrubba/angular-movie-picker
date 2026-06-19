@@ -2,16 +2,15 @@ import { Component, input, inject, effect, linkedSignal, signal } from '@angular
 import { Icon } from '../../../../global-components/icon/icon';
 import { Movie } from '../../../../models/movie';
 import { Movies } from '../../../../services/movies';
-import { movieDetailsResponse } from '../../../../models/DTOs/movieDetailsResponse';
-import { movieCastResponse } from '../../../../models/DTOs/movieCastResponse';
 import { CastMember } from '../../../../models/castMember';
 import { Director } from '../../../../models/director';
-import { movieStreamResponse } from '../../../../models/DTOs/movieStreamResponse';
 import { StreamProvider } from '../../../../models/streamProvider';
 import { MovieDetailsSkeleton } from '../loading/movie-details-skeleton/movie-details-skeleton';
 import { forkJoin } from 'rxjs';
 import { getProviderIcon } from '../../../../../helpers/getProviderIcon';
-import { StorageService } from '../../../../services/storage';
+import { WatchlistService } from '../../../../services/watchlist';
+
+
 
 @Component({
   selector: 'app-movie-details',
@@ -22,7 +21,7 @@ import { StorageService } from '../../../../services/storage';
 export class MovieDetails {
 
   movieService = inject(Movies)
-  storageService = inject(StorageService)
+  watchlistService = inject(WatchlistService)
   
   selectedMovie = input<Movie | null>(null)
   movie = linkedSignal(() => this.selectedMovie());
@@ -108,24 +107,12 @@ export class MovieDetails {
     
   }
 
-  addToWatchlist(){
+  addToWatchlist() {
     const movie = this.selectedMovie();
-    if (!movie) {
-      return;
-    }
+    if (!movie) return;
 
-    const currentWatchlist = this.storageService.getItem('Watchlist');
-    const watchlist: Movie[] = Array.isArray(currentWatchlist) ? currentWatchlist : [];
-
-    if (!watchlist.some(item => item.id === movie.id)) {
-      watchlist.push({
-       ...movie,
-       isWatched: false 
-      });
-      this.storageService.setItem('Watchlist', watchlist);
-    }
-
-    
-    
+    this.watchlistService.addToWatchlist(movie);
+   
   }
 }
+

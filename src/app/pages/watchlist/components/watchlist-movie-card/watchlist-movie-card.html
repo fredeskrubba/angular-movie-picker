@@ -1,32 +1,22 @@
-<article class="watchlist-movie-card" (click)="isOpen.set(!isOpen())">
-  <img [src]="'https://image.tmdb.org/t/p/w500' + watchlistMovie().poster_path" alt="{{ watchlistMovie().title }} poster" class="movie-poster">
+<article class="watchlist-movie-card">
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + watchlistMovie().poster_path"
+    alt="{{ watchlistMovie().title }} poster"
+    class="movie-poster"
+  />
 
-  <div class="movie-meta {{isOpen() ? 'expanded' : ''}}">
-    <div class="movie-copy">
+  <div class="movie-config">
+    <div class="movie-details">
       <h2>{{ watchlistMovie().title }}</h2>
+      <button class="toggle-watched-button" (click)="toggleWatched()">
+        <app-icon name="checkmark-icon"></app-icon>
+        Mark as watched
+      </button>
     </div>
 
-    @if (isOpen()) {
-      <div class="expanded-menu">
-        <span>
-          <p>Seen</p>
-        </span>
-        <span>
-          <p>My Rating</p>
-        </span>
-        <button class="remove-button" (click)="removeFromWatchlist($event)">Remove from watchlist</button>
-      </div>
-    } @else {
-      <div class="menu">
-          <span class="flex" aria-label="Favorite">
-              <p>5</p>
-              <app-icon name="star-icon" class="rating-icon"></app-icon>
-          </span>
-          <span class="flex" aria-label="Watched">
-              <app-icon name="checkmark-icon" class="status-icon"></app-icon>
-          </span>
-      </div>
-
-    }
+    <button type="button" class="remove-button" (click)="removeFromWatchlist(this.watchlistMovie().id)">
+      <app-icon name="trash-icon"></app-icon>
+      Remove from watchlist
+    </button>
   </div>
 </article>

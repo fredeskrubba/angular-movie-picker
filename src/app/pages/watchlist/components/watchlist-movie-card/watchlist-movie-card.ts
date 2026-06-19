@@ -1,8 +1,7 @@
 import { Component, input, signal, inject } from '@angular/core';
 import { Movie } from '../../../../models/movie';
 import { Icon } from '../../../../global-components/icon/icon';
-import { StorageService } from '../../../../services/storage';
-
+import { WatchlistService } from '../../../../services/watchlist';
 
 @Component({
   selector: 'app-watchlist-movie-card',
@@ -12,14 +11,17 @@ import { StorageService } from '../../../../services/storage';
 })
 
 export class WatchlistMovieCard {
-    storageService = inject(StorageService)
+    watchlistService = inject(WatchlistService);
     watchlistMovie = input.required<Movie>();
     isOpen = signal(false);
 
-    removeFromWatchlist(e: MouseEvent) {
-      e.stopPropagation();
-      this.storageService.removeItem(this.watchlistMovie().title);
-      console.log(`Removing ${this.watchlistMovie().title} from watchlist`);
-      console.log(this.storageService.getItem("Watchlist"));
+    removeFromWatchlist(movieId: number) {
+
+        this.watchlistService.deleteItemFromWatchlist(movieId)
+    }
+
+    toggleWatched(){
+        console.log(1)
+        this.watchlistMovie().isWatched = this.watchlistService.toggleMovieWatchStatus(this.watchlistMovie());
     }
 }

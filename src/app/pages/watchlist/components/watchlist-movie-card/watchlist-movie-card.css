@@ -4,8 +4,8 @@
 }
 
 .watchlist-movie-card {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   width: 100%;
   min-height: 230px;
   overflow: hidden;
@@ -15,90 +15,57 @@
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
 }
 
-.watchlist-movie-card:hover {
-  cursor: pointer;
-}
-
 .movie-poster {
-    width: 100%;
-    max-height: 500px;
-  aspect-ratio: 2 / 3;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.movie-meta {
+.movie-config {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.45rem 0.55rem 0.55rem;
-  min-height: 52px;
-}
-
-.movie-meta.expanded {
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem;
   gap: 1rem;
-}
-
-.movie-copy {
-  flex: 1;
   min-width: 0;
-  padding: 1rem 0;
-}
-
-.movie-copy h2 {
-  margin: 0;
-  font-size: 1.5rem;
-  line-height: 1.1;
-  color: var(--accent);
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
   overflow: hidden;
 }
 
-.menu {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-}
-
-.expanded-menu {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.75rem;
-  width: 100%;
+.movie-config h2 {
+  font-size: 2rem;
+  margin: 0;
   color: var(--accent);
 }
 
-.expanded-menu p {
-  margin: 0;
+.toggle-watched-button {
+  border: 1px solid var(--accent);
+  margin-top: 1rem;
+  background-color: var(--surface);
+  color: var(--accent);
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  gap: 1rem;
+  border-radius: 120px;
 }
 
-.expanded-menu .remove-button {
-  width: 100%;
-  outline: none;
-  border: none;
-  padding: 0.75rem;
-  font-size: 1.3rem;
-  font-weight: 500;
+.toggle-watched-button app-icon{
+  fill: var(--accent);
+}
+
+.remove-button {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
   background-color: var(--color-delete);
-  transition: background-color 0.2s ease-in-out;
+  border: none;
+  padding: 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  border-radius: 10px;
 }
 
-.expanded-menu .remove-button:hover {
+button:hover {
   cursor: pointer;
-  background-color: rgba(201, 76, 76, 0.75);
-}
-
-
-.flex {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
 }

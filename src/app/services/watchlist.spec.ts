@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Storage } from './storage';
+import { Watchlist } from './watchlist';
 
-describe('Storage', () => {
-  let service: Storage;
+describe('Watchlist', () => {
+  let service: Watchlist;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Storage);
+    service = TestBed.inject(Watchlist);
   });
 
   it('should be created', () => {
