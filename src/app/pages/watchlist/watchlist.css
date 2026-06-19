@@ -130,3 +130,7 @@
     gap: 1rem;
 }
 
+.no-movie-message {
+    color: var(--accent);
+}
+

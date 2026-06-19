@@ -8,10 +8,17 @@
   <div class="movie-config">
     <div class="movie-details">
       <h2>{{ watchlistMovie().title }}</h2>
-      <button class="toggle-watched-button" (click)="toggleWatched()">
-        <app-icon name="checkmark-icon"></app-icon>
-        Mark as watched
-      </button>
+      @if(!this.watchlistMovie().isWatched){
+        <button class="toggle-watched-button" (click)="toggleWatched()">
+          <app-icon name="checkmark-icon"></app-icon>
+          Mark as watched
+        </button>
+      } @else {
+          <button class="toggle-unwatched-button" (click)="toggleWatched()">
+            <app-icon name="checkmark-icon"></app-icon>
+            Mark as unwatched
+        </button>
+      }
     </div>
 
     <button type="button" class="remove-button" (click)="removeFromWatchlist(this.watchlistMovie().id)">

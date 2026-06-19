@@ -38,11 +38,9 @@
   color: var(--accent);
 }
 
-.toggle-watched-button {
-  border: 1px solid var(--accent);
-  margin-top: 1rem;
+.toggle-watched-button, .toggle-unwatched-button {
   background-color: var(--surface);
-  color: var(--accent);
+  margin-top: 1rem;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
   display: flex;
@@ -50,8 +48,22 @@
   border-radius: 120px;
 }
 
+.toggle-watched-button {
+  color: var(--accent);
+  border: 1px solid var(--accent);
+}
+
+.toggle-unwatched-button {
+  color: var(--color-delete);
+  border: 1px solid var(--color-delete);
+}
+
 .toggle-watched-button app-icon{
   fill: var(--accent);
+}
+
+.toggle-unwatched-button app-icon{
+  fill: var(--color-delete);
 }
 
 .remove-button {
