@@ -74,9 +74,10 @@ export class WatchlistService {
       this.watchlist.set(updatedWatchlist);
       localStorage.setItem('Watchlist', JSON.stringify(updatedWatchlist));
     }
-    console.log(newValue)
+    
     return newValue;
   }
 
+  
 
 }

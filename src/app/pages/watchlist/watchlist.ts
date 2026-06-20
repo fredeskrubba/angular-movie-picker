@@ -44,6 +44,8 @@ export class Watchlist implements OnInit {
   onSearchUpdated(query: string) {
    
     this.searchQuery.set(query);
+    console.log(this.searchQuery())
+    console.log(this.items().length)
     
   }
 

@@ -50,10 +50,12 @@
                         }
                     }
                 }
+            } @else if(this.searchQuery() != "" && this.items().length <= 0) {
+            
+                <p class="no-movie-message">No movies found with that title</p>
             } @else {
-            
+                
                 <p class="no-movie-message">Your watchlist is empty.</p>
-            
             }
         </div>
     </div>

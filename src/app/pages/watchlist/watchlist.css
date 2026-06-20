@@ -50,12 +50,6 @@
     font-weight: 300;
 }
 
-.filter-box {
-    padding: 20px;
-    background-color: var(--surface);
-    border-radius: 4px;
-    height: 400px;
-}
 
 .movie-section {
    display: flex;
