@@ -11,18 +11,26 @@ export class WatchlistService {
   watchlist = signal<Movie[]>([]);
 
   getUserWatchlist(){
-    try {
-      const raw = localStorage.getItem("Watchlist");
+    this.loadFromStorage();
+  }
+
+
+  loadFromStorage(){
+    let loadedWatchlist: Movie[] = [];
+      try {
+        const raw = localStorage.getItem("Watchlist");
       
       if(raw){
-        this.watchlist.set(JSON.parse(raw) as Movie[])
+        loadedWatchlist = JSON.parse(raw) as Movie[]
+        this.watchlist.set(loadedWatchlist)
       } else {
-          this.watchlist.set([])
+          this.watchlist.set(loadedWatchlist)
       }
-
+      return loadedWatchlist;
       
     } catch (e) {
       console.error('Error reading from local storage', e);
+      return loadedWatchlist;
     }
   }
 
@@ -78,6 +86,8 @@ export class WatchlistService {
     return newValue;
   }
 
-  
+  isMovieInWatchlist(id: number) {
+    return this.loadFromStorage().some(item => item.id === id);
+  }
 
 }

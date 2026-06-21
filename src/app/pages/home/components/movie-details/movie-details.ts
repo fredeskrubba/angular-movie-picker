@@ -34,14 +34,13 @@ export class MovieDetails {
 
   getProviderIcon = getProviderIcon;
 
-
   constructor() {
     effect(() => {
-
       const movie = this.movie();
-      
 
       if (!movie) return;
+
+      this.updateWatchlistFlag(movie);
 
       if (
         movie.overview != null &&
@@ -57,54 +56,60 @@ export class MovieDetails {
         cast: this.movieService.getMovieCast(id),
         streamers: this.movieService.getMovieStreamers(id),
         imdbId: this.movieService.getMovieImdbId(id),
-    }).subscribe({
-      next: (result) => {
+      }).subscribe({
+        next: (result) => {
+          const enrichedMovie: Movie = {
+            ...movie,
+            overview: result.details.overview,
+            release_date: result.details.release_date,
+            runtime: result.details.runtime,
+            video: result.details.video,
+            genres: result.details.genres,
+          };
 
-        const enrichedMovie: Movie = {
-          ...movie,
-          overview: result.details.overview,
-          release_date: result.details.release_date,
-          runtime: result.details.runtime,
-          video: result.details.video,
-          genres: result.details.genres
-        };
+          this.movie.set(enrichedMovie);
 
-        this.movie.set(enrichedMovie);
+          this.cast.set(result.cast.cast);
 
-        this.cast.set(result.cast.cast);
+          this.directors.set(
+            result.cast.crew.filter(
+              member => member.job.toLowerCase() === 'director'
+            )
+          );
 
-        this.directors.set(
-          result.cast.crew.filter(
-            member => member.job.toLowerCase() === 'director'
-          )
-        );
+          this.streamProviders.set(
+            result.streamers.results['DK']?.flatrate ?? []
+          );
 
-        this.streamProviders.set(
-          result.streamers.results["DK"]?.flatrate ?? []
-        );
+          this.ratingId.set(result.imdbId.imdb_id);
 
-        this.ratingId.set(result.imdbId.imdb_id);
+          this.movieService.getImdbRating(this.ratingId()).subscribe({
+            next: (res) => {
+              this.rating.set(res.imdbRating);
+              this.isLoading.set(false);
+            },
+            error: () => {
+              this.isLoading.set(false);
+            }
+          });
+        },
 
-        this.movieService.getImdbRating(this.ratingId()).subscribe({
-          next: (res) => {
-            this.rating.set(res.imdbRating);
-            this.isLoading.set(false);
-          },
-          error: () => {
-            this.isLoading.set(false);
-          }
-        });
-      },
-
-      error: () => {
-        this.isLoading.set(false);
-      }
+        error: () => {
+          this.isLoading.set(false);
+        }
+      });
     });
+  }
 
+  private updateWatchlistFlag(movie: Movie) {
+    const isOnWatchList = this.watchlistService.isMovieInWatchlist(movie.id);
 
-    });
-    
-    
+    if (movie.onWatchList !== isOnWatchList) {
+      this.movie.set({
+        ...movie,
+        onWatchList: isOnWatchList,
+      });
+    }
   }
 
   addToWatchlist() {
@@ -112,7 +117,22 @@ export class MovieDetails {
     if (!movie) return;
 
     this.watchlistService.addToWatchlist(movie);
-   
+    this.movie.set({
+      ...movie,
+      onWatchList: true,
+    });
+  }
+
+  removeFromWatchlist(){
+    const movie = this.selectedMovie();
+
+    if (!movie) return;
+
+    this.watchlistService.deleteItemFromWatchlist(movie.id);
+    this.movie.set({
+      ...movie,
+      onWatchList: false,
+    });
   }
 }
 

@@ -110,17 +110,25 @@
 .movie-description {
     color: var(--text-secondary);
 }
-.movie-details .add-button {
+.movie-details .add-button, .movie-details .remove-button {
     width: 100%;
     padding: 20px;
     font-size: 2rem;
     border: none;
     color: var(--surface);
-    background-color: var(--accent);
     
 }
 
-.movie-details .add-button:hover {
+.movie-details .add-button {
+    background-color: var(--accent);
+
+}
+
+.movie-details .remove-button  {
+    background-color: var(--color-delete);
+}
+
+.movie-details .add-button:hover, .movie-details .remove-button:hover {
     cursor: pointer;
 }
 

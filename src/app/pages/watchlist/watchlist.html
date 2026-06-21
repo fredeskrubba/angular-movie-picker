@@ -40,7 +40,7 @@
                         }
                     }
                     @case (watchlistFilter.Watched) {
-                        @for (movie of this.items()?.filter(m => m.isWatched) || []; track movie.id) {
+                        @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
                             <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                         }
                     }
