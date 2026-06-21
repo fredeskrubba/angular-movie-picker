@@ -6,6 +6,7 @@ import { Icon } from '../../global-components/icon/icon';
 import { Movie } from '../../models/movie';
 import { WatchlistService } from '../../services/watchlist';
 
+
 @Component({
   selector: 'app-watchlist',
   imports: [WatchlistMovieCard, Icon],
@@ -16,7 +17,7 @@ import { WatchlistService } from '../../services/watchlist';
 
 export class Watchlist implements OnInit {
   watchlistService = inject(WatchlistService)
-
+  
   watchlistFilter = WatchlistFilter;
 
   searchQuery = signal("");
@@ -44,8 +45,6 @@ export class Watchlist implements OnInit {
   onSearchUpdated(query: string) {
    
     this.searchQuery.set(query);
-    console.log(this.searchQuery())
-    console.log(this.items().length)
     
   }
 

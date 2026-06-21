@@ -9,7 +9,7 @@ import { MovieDetailsSkeleton } from '../loading/movie-details-skeleton/movie-de
 import { forkJoin } from 'rxjs';
 import { getProviderIcon } from '../../../../../helpers/getProviderIcon';
 import { WatchlistService } from '../../../../services/watchlist';
-
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -22,7 +22,8 @@ export class MovieDetails {
 
   movieService = inject(Movies)
   watchlistService = inject(WatchlistService)
-  
+  toastr = inject(ToastrService);
+
   selectedMovie = input<Movie | null>(null)
   movie = linkedSignal(() => this.selectedMovie());
   cast = signal<CastMember[]>([]);
@@ -121,6 +122,10 @@ export class MovieDetails {
       ...movie,
       onWatchList: true,
     });
+    this.toastr.info(`${movie.title} added to watchlist`, `${movie.title} added`, {
+      progressBar: true,
+      timeOut: 1500
+    });
   }
 
   removeFromWatchlist(){
@@ -133,6 +138,11 @@ export class MovieDetails {
       ...movie,
       onWatchList: false,
     });
+
+    this.toastr.info(`${movie.title} removed from watchlist`, `${movie.title} removed from watchlist`, {
+      progressBar: true,
+      timeOut: 1500
+    })
   }
 }
 
