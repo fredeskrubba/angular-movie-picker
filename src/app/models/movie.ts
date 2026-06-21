@@ -8,5 +8,6 @@ export type Movie = {
     runtime?: number;
     video?: boolean;
     isWatched?: boolean;
+    userRating: number;
     genres?: { id: number; name: string }[]
 }

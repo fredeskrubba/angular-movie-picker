@@ -19,6 +19,31 @@
             Mark as unwatched
         </button>
       }
+      @if(this.watchlistMovie().isWatched){
+
+        <div class="rating-container">
+          <p class="rating-title">My rating</p>
+          <div
+            class="star-container"
+            role="radiogroup"
+            aria-label="Star rating"
+          >
+            @for (star of stars; track $index) {
+              <button
+                type="button"
+                class="star-button"
+                role="radio"
+                [attr.aria-checked]="star <= rating()"
+                [attr.aria-label]="star + ' star'"
+                (click)="setRating(star)"
+              >
+            
+                <app-icon name="star-icon" class="star" [class.filled]="star <= rating()"></app-icon>
+              </button>
+            }
+          </div>
+        </div>
+      }
     </div>
 
     <button type="button" class="remove-button" (click)="removeFromWatchlist(this.watchlistMovie().id)">

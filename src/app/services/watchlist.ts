@@ -25,6 +25,7 @@ export class WatchlistService {
       } else {
           this.watchlist.set(loadedWatchlist)
       }
+      console.log(loadedWatchlist)
       return loadedWatchlist;
       
     } catch (e) {
@@ -47,7 +48,8 @@ export class WatchlistService {
         ...watchlist,
         {
           ...movie,
-          isWatched: false
+          isWatched: false, 
+          userRating: 1
         }
       ]
       this.watchlist.set(updatedWatchlist)
@@ -82,11 +84,32 @@ export class WatchlistService {
       localStorage.setItem('Watchlist', JSON.stringify(updatedWatchlist));
     }
     
+    this.updateUserRating(movie.id, 1);
     return newValue;
   }
 
   isMovieInWatchlist(id: number) {
     return this.loadFromStorage().some(item => item.id === id);
+  }
+
+  updateUserRating(id: number, rating: number){
+    
+    
+    const raw = localStorage.getItem('Watchlist');
+
+    const watchlist: Movie[] = raw ? JSON.parse(raw) : [];
+
+    if (watchlist.some(item => item.id === id)) {
+      const updatedWatchlist = watchlist.map(item =>
+        item.id === id
+          ? { ...item, userRating: rating }
+          : item
+      );
+
+      this.watchlist.set(updatedWatchlist);
+      localStorage.setItem('Watchlist', JSON.stringify(updatedWatchlist));
+    }
+    
   }
 
 }

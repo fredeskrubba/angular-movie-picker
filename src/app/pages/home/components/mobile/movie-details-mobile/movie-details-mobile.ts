@@ -46,7 +46,6 @@ export class MovieDetailsMobile {
         }).subscribe({
       next: res => {
 
-        console.log(res)
 
         this.movieInfo.set({
           id: res.details.id,
@@ -57,6 +56,7 @@ export class MovieDetailsMobile {
           runtime: res.details.runtime,
           genres: res.details.genres,
           onWatchList: false,
+          userRating: 1
         });
 
         this.cast.set(res.cast.cast);

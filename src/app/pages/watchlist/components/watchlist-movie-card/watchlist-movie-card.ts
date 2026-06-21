@@ -1,4 +1,4 @@
-import { Component, input, signal, inject } from '@angular/core';
+import { Component, input, signal, inject, computed } from '@angular/core';
 import { Movie } from '../../../../models/movie';
 import { Icon } from '../../../../global-components/icon/icon';
 import { WatchlistService } from '../../../../services/watchlist';
@@ -15,9 +15,21 @@ export class WatchlistMovieCard {
     watchlistService = inject(WatchlistService);
     toastr = inject(ToastrService);
 
-    watchlistMovie = input.required<Movie>();
-    isOpen = signal(false);
+    stars = [1, 2, 3, 4, 5];
 
+    
+    
+    watchlistMovie = input.required<Movie>();
+    
+    isOpen = signal(false);
+    
+    rating = computed(() => this.watchlistMovie().userRating ?? 1);
+
+    setRating(value: number) {
+        this.watchlistService.updateUserRating(this.watchlistMovie().id, value);
+        
+
+    }
     removeFromWatchlist(movieId: number) {
 
         this.watchlistService.deleteItemFromWatchlist(movieId)
@@ -30,7 +42,6 @@ export class WatchlistMovieCard {
     toggleWatched(){
         this.watchlistService.toggleMovieWatchStatus(this.watchlistMovie());
         
-        console.log(this.watchlistMovie().isWatched)
         if(this.watchlistMovie().isWatched == true){
             this.toastr.info(`${this.watchlistMovie().title} moved to watched`, "Moved to watched", {
                 progressBar: true,

@@ -38,6 +38,39 @@
   color: var(--accent);
 }
 
+.rating-title {
+  color: var(--accent);
+}
+.star-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 1rem;
+}
+.star-container button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  line-height: 0;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  fill: var(--surface);
+  stroke: var(--accent);
+}
+
+.star.filled {
+  fill: var(--accent);
+}
+
 .toggle-watched-button, .toggle-unwatched-button {
   background-color: var(--surface);
   margin-top: 1rem;
