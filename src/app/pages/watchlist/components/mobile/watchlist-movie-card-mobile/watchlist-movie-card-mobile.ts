@@ -1,4 +1,4 @@
-import { Component, inject, signal, input, computed } from '@angular/core';
+import { Component, inject, signal, input, computed, Output, EventEmitter } from '@angular/core';
 import { WatchlistService } from '../../../../../services/watchlist';
 import { Movie } from '../../../../../models/movie';
 import { Icon } from '../../../../../global-components/icon/icon';
@@ -12,30 +12,28 @@ import { Icon } from '../../../../../global-components/icon/icon';
 export class WatchlistMovieCardMobile {
   watchlistService = inject(WatchlistService);
     
-
+    @Output() openRatingMenu = new EventEmitter<string>();
     stars = [1, 2, 3, 4, 5];
 
     rating = computed(() => this.watchlistMovie().userRating ?? 1);
     
     watchlistMovie = input.required<Movie>();
     
-    isOpen = signal(false);
-    
 
     setRating(value: number) {
         this.watchlistService.updateUserRating(this.watchlistMovie().id, value);
-        
-
     }
-    removeFromWatchlist(movieId: number) {
 
+    removeFromWatchlist(movieId: number) {
         this.watchlistService.deleteItemFromWatchlist(movieId)
-            
     }
 
     toggleWatched(){
         this.watchlistService.toggleMovieWatchStatus(this.watchlistMovie());
-        
-        
+    }
+
+    openRateMenu(){
+        console.log(1211)
+        this.openRatingMenu.emit();
     }
 }

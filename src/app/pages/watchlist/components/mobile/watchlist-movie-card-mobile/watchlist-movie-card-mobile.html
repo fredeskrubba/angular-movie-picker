@@ -10,7 +10,7 @@
         <h2>{{ watchlistMovie().title }}</h2>
         @if(this.watchlistMovie().isWatched){
     
-          <div class="rating-container">
+          <div class="rating-container" (click)="this.openRateMenu()">
               <p class="rating-title">{{this.rating()}}</p>
               <app-icon name="star-icon" class="star"></app-icon>
           </div>

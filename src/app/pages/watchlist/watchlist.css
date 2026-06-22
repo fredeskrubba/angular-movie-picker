@@ -90,7 +90,7 @@
     font-weight: 300;
 }
 
-.random-button {
+.random-button, .random-button-mobile {
     height: 100%;
     font-size: 18px;
     font-weight: 600;
@@ -103,7 +103,14 @@
     gap: 0.5rem;
 }
 
-.random-button app-icon {
+.random-button-mobile {
+    display: none;
+    padding: 1rem;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.random-button app-icon, .random-button-mobile app-icon {
     fill: var(--accent);
 }
 
@@ -158,6 +165,10 @@
 
     .action-header {
         display: none;
+    }
+
+    .random-button-mobile {
+        display: flex;
     }
     .movie-grid-desktop {
         display: none;

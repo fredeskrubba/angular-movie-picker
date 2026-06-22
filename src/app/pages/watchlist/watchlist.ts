@@ -6,11 +6,12 @@ import { Icon } from '../../global-components/icon/icon';
 import { Movie } from '../../models/movie';
 import { WatchlistService } from '../../services/watchlist';
 import { WatchlistMovieCardMobile } from './components/mobile/watchlist-movie-card-mobile/watchlist-movie-card-mobile';
+import { RatingMenu } from './components/mobile/rating-menu/rating-menu';
 
 
 @Component({
   selector: 'app-watchlist',
-  imports: [WatchlistMovieCard, WatchlistMovieCardMobile,Icon],
+  imports: [WatchlistMovieCard, WatchlistMovieCardMobile, Icon, RatingMenu],
   templateUrl: './watchlist.html',
   styleUrl: './watchlist.css',
 })
@@ -24,6 +25,7 @@ export class Watchlist implements OnInit {
   searchQuery = signal("");
   currentFilter = signal(WatchlistFilter.All);
 
+  ratingMenuOpen = signal(false);
   
   items = computed(() => {
     const sq = this.searchQuery().toLowerCase();

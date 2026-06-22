@@ -21,7 +21,6 @@ export class WatchlistMovieCard {
     
     watchlistMovie = input.required<Movie>();
     
-    isOpen = signal(false);
     
     rating = computed(() => this.watchlistMovie().userRating ?? 1);
 

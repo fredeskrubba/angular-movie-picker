@@ -1,0 +1,32 @@
+@if (isOpen) {
+  <div class="menu-backdrop" (click)="closeMenu()"></div>
+}
+
+<div class="rating-menu" [class.open]="isOpen" (click)="$event.stopPropagation()">
+    <div class="body">
+
+        <p class="rating-title">My rating</p>
+        <div
+          class="star-container"
+          role="radiogroup"
+          aria-label="Star rating"
+        >
+          @for (star of stars; track $index) {
+            <button
+              type="button"
+              class="star-button"
+              role="radio"
+              [attr.aria-checked]="star <= rating()"
+              [attr.aria-label]="star + ' star'"
+            
+            >
+          
+              <app-icon name="star-icon" class="star" [class.filled]="star <= rating()"></app-icon>
+            </button>
+          }
+        </div>
+    </div>
+    <button class="confirm-button">
+        Accept
+    </button>
+</div>
