@@ -1,3 +1,10 @@
+:host {
+    display: block;
+    height: var(--navbar-height);
+    --subnavbar-height: 4rem;
+    --subnavbar-height-mobile: 3.25rem;
+}
+
 nav {
     background-color: var(--surface);
     color: var(--text-primary);
@@ -5,6 +12,11 @@ nav {
     display: flex;
     align-items: center;
     z-index: 9999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--navbar-height);
 }
 
 .menu-open {
@@ -75,6 +87,15 @@ h1 {
     padding: 0.85rem 3rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     border-top: 1px solid var(--accent);
+    position: fixed;
+    top: var(--navbar-height);
+    left: 0;
+    right: 0;
+    z-index: 9998;
+}
+
+:host(.has-subnav) {
+    height: calc(var(--navbar-height) + var(--subnavbar-height));
 }
 
 .desktop-subnavbar {
@@ -151,6 +172,14 @@ svg {
 
 
 @media (max-width: 768px) {
+    :host {
+        height: var(--navbar-height-mobile);
+    }
+
+    :host(.has-subnav) {
+        height: calc(var(--navbar-height-mobile) + var(--subnavbar-height-mobile));
+    }
+
     nav {
         padding: 1.5rem 2rem;
         position: sticky;
@@ -158,6 +187,7 @@ svg {
         right: 0;
         left: 0;
         z-index: 1000;
+        height: var(--navbar-height-mobile);
     }
 
     .nav-icon {
@@ -165,6 +195,9 @@ svg {
         height: 30px;
     }
 
+    .subnavbar {
+        top: var(--navbar-height-mobile);
+    }
     ul {
         display: none;
     }

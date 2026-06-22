@@ -1,4 +1,4 @@
-import { Component, inject, signal, computed } from '@angular/core';
+import { Component, HostBinding, inject, signal, computed } from '@angular/core';
 import { Icon } from '../icon/icon';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink, RouterLinkActive, NavigationEnd, ActivatedRoute } from '@angular/router';
@@ -24,6 +24,10 @@ export class Navbar {
 
   showSubnav = computed(() => this.currentPath() === '/browse');
   tabs = ['Now Playing', 'Popular', 'Upcoming', 'Top Rated', 'All'];
+
+  @HostBinding('class.has-subnav') get hasSubnav() {
+    return this.showSubnav();
+  }
 
   constructor() {
     this.router.events

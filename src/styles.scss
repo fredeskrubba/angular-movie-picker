@@ -12,23 +12,23 @@
   --accent: #6366f1;
   --color-delete: #c94c4c;
   --main-font: 'Inter', sans-serif;
+    --navbar-height: 7rem;
+    --navbar-height-mobile: 6rem;
 }
 
-body, html{
+body, html {
     height: 100dvh;
     background-color: var(--background);
     font-family: var(--main-font);
-}
-
-body {
-  margin: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 app-root {
   height: 100vh;
-  display: block;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 .flex-container {
   display: flex;
