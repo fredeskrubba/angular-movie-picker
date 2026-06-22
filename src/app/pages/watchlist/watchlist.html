@@ -30,7 +30,7 @@
             </button>
         </div>
 
-        <div class="movie-grid">
+        <div class="movie-grid-desktop">
             @if (this.items() ? this.items().length > 0 : false) {
                 
                 @switch (currentFilter()) {
@@ -47,6 +47,34 @@
                     @case (watchlistFilter.NotWatched) {
                         @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
                             <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                        }
+                    }
+                }
+            } @else if(this.searchQuery() != "" && this.items().length <= 0) {
+            
+                <p class="no-movie-message">No movies found with that title</p>
+            } @else {
+                
+                <p class="no-movie-message">Your watchlist is empty.</p>
+            }
+        </div>
+        <div class="movie-list-mobile">
+            @if (this.items() ? this.items().length > 0 : false) {
+                
+                @switch (currentFilter()) {
+                    @case (watchlistFilter.All) {
+                        @for (movie of this.items(); track movie.id) {
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie"></app-watchlist-movie-card-mobile>
+                        }
+                    }
+                    @case (watchlistFilter.Watched) {
+                        @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie"></app-watchlist-movie-card-mobile>
+                        }
+                    }
+                    @case (watchlistFilter.NotWatched) {
+                        @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie"></app-watchlist-movie-card-mobile>
                         }
                     }
                 }

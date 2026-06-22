@@ -5,11 +5,12 @@ import { WatchlistFilter } from './watchlist.enum';
 import { Icon } from '../../global-components/icon/icon';
 import { Movie } from '../../models/movie';
 import { WatchlistService } from '../../services/watchlist';
+import { WatchlistMovieCardMobile } from './components/mobile/watchlist-movie-card-mobile/watchlist-movie-card-mobile';
 
 
 @Component({
   selector: 'app-watchlist',
-  imports: [WatchlistMovieCard, Icon],
+  imports: [WatchlistMovieCard, WatchlistMovieCardMobile,Icon],
   templateUrl: './watchlist.html',
   styleUrl: './watchlist.css',
 })

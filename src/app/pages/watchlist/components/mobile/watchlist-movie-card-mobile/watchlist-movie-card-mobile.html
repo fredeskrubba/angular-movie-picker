@@ -1,0 +1,39 @@
+<article class="watchlist-movie-card">
+  <img
+    [src]="'https://image.tmdb.org/t/p/w500' + watchlistMovie().poster_path"
+    alt="{{ watchlistMovie().title }} poster"
+    class="movie-poster"
+  />
+
+  <div class="movie-info">
+    <div class="header">
+        <h2>{{ watchlistMovie().title }}</h2>
+        @if(this.watchlistMovie().isWatched){
+    
+          <div class="rating-container">
+              <p class="rating-title">{{this.rating()}}</p>
+              <app-icon name="star-icon" class="star"></app-icon>
+          </div>
+        }
+    </div>
+    <div class="movie-actions">
+        <button type="button" class="remove-button" (click)="removeFromWatchlist(this.watchlistMovie().id)">
+          <app-icon name="trash-icon"></app-icon>
+          Remove from watchlist
+        </button>
+      @if(!this.watchlistMovie().isWatched){
+        <button class="toggle-watched-button" (click)="toggleWatched()">
+          <app-icon name="checkmark-icon"></app-icon>
+          Mark as watched
+        </button>
+      } @else {
+          <button class="toggle-unwatched-button" (click)="toggleWatched()">
+              <app-icon name="checkmark-icon"></app-icon>
+              Mark as unwatched
+            </button>
+        }
+    </div>
+
+  </div>
+</article>
+
