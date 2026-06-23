@@ -7,8 +7,8 @@ import { MovieDetails } from './components/movie-details/movie-details';
 import { MovieCardMobile } from './components/mobile/movie-card-mobile/movie-card-mobile';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CardSkeleton } from './components/loading/card-skeleton/card-skeleton';
-import { SearchToggle } from './components/mobile/search-toggle/search-toggle';
-import { SearchMenu } from './components/mobile/search-menu/search-menu';
+import { SearchToggle } from '../../global-components/navbar/mobile/search-toggle/search-toggle';
+import { SearchMenu } from '../../global-components/navbar/mobile/search-menu/search-menu';
 import { MobileCardSkeleton } from './components/loading/mobile-card-skeleton/mobile-card-skeleton';
 
 @Component({

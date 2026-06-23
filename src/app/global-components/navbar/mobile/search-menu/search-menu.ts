@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output, signal } from '@angular/core';
-import { Icon } from '../../../../../global-components/icon/icon';
+import { Icon } from '../../../icon/icon';
 
 @Component({
   selector: 'app-search-menu',
@@ -9,11 +9,10 @@ import { Icon } from '../../../../../global-components/icon/icon';
 })
 export class SearchMenu {
   @Input() isOpen = false;
-  @Output() search = new EventEmitter<string>(); 
-
+  @Output() search = new EventEmitter<string>();
   @Output() closed = new EventEmitter<void>();
 
-  searchQuery = signal("");
+  searchQuery = signal('');
 
   updateSearchQuery(input: string): void {
     this.searchQuery.set(input);
@@ -25,7 +24,7 @@ export class SearchMenu {
 
   searchForMovie(): void {
     this.search.emit(this.searchQuery());
-    this.searchQuery.set("");
+    this.searchQuery.set('');
     this.closeMenu();
   }
 }
