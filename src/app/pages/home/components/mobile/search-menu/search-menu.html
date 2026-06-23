@@ -1,5 +1,5 @@
 @if (isOpen) {
-  <div class="search-menu-backdrop" (click)="closeMenu()"></div>
+  <div class="search-menu-backdrop" [class.open]="isOpen" (click)="closeMenu()"></div>
 }
 
 <div class="search-menu" [class.open]="isOpen" (click)="$event.stopPropagation()">
