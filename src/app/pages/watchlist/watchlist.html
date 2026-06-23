@@ -67,17 +67,17 @@
                 @switch (currentFilter()) {
                     @case (watchlistFilter.All) {
                         @for (movie of this.items(); track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" openRatingMenu="ratingMenuOpen.set(true)"></app-watchlist-movie-card-mobile>
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
                         }
                     }
                     @case (watchlistFilter.Watched) {
                         @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" openRatingMenu="ratingMenuOpen.set(true)"></app-watchlist-movie-card-mobile>
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
                         }
                     }
                     @case (watchlistFilter.NotWatched) {
                         @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" openRatingMenu="ratingMenuOpen.set(true)"></app-watchlist-movie-card-mobile>
+                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
                         }
                     }
                 }
@@ -93,6 +93,7 @@
 
     <app-rating-menu
       [isOpen]="ratingMenuOpen()"
+      [movie]="this.currentMovie()"
       (closed)="ratingMenuOpen.set(false)"
     />
 </main>

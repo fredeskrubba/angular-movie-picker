@@ -2,14 +2,28 @@
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
     z-index: 9998;
 }
 
+.menu-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
 .rating-menu {
-    display: none;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: var(--surface);
-    transform: translateY(-100%);
-    transition: transform 0.3s ease-in-out;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
     border-top-right-radius: 0.3rem;
     border-top-left-radius: 0.3rem;
     border-top: 1px solid var(--accent);
@@ -27,16 +41,49 @@
     margin-bottom: 1rem;
 }
 
+.rating-title {
+    color: var(--accent);
+    font-size: 1.8rem;
+    margin: 0.5rem;
+}
 .rating-menu.open {
-    display: block;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 9999;
     transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    z-index: 9999;
 }
 
+.star-container {
+  display: flex;
+  gap: 5px;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.star-container button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  line-height: 0;
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+  fill: var(--surface);
+  stroke: var(--accent);
+}
+
+.star.filled {
+  fill: var(--accent);
+}
 
 
 .confirm-button {

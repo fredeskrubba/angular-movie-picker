@@ -26,6 +26,7 @@ export class Watchlist implements OnInit {
   currentFilter = signal(WatchlistFilter.All);
 
   ratingMenuOpen = signal(false);
+  currentMovie = signal<Movie | null>(null);
   
   items = computed(() => {
     const sq = this.searchQuery().toLowerCase();
@@ -51,6 +52,10 @@ export class Watchlist implements OnInit {
     
   }
 
+  openRatingMenu(movie: Movie){
+    this.ratingMenuOpen.set(true);
+    this.currentMovie.set(movie);
+  }
   ngOnInit() {
     this.getWatchlist();
   }
