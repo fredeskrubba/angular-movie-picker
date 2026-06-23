@@ -1,5 +1,10 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, inject } from '@angular/core';
 import { Movie } from '../models/movie';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
+import { movieListResponse } from '../models/DTOs/movieListResponse';
+import { firstValueFrom } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root',
@@ -8,6 +13,7 @@ import { Movie } from '../models/movie';
 export class WatchlistService {
 
   watchlist = signal<Movie[]>([]);
+  http = inject(HttpClient);
 
   getUserWatchlist(){
     this.loadFromStorage();
@@ -109,6 +115,31 @@ export class WatchlistService {
       localStorage.setItem('Watchlist', JSON.stringify(updatedWatchlist));
     }
     
+  }
+
+  async addRandomMovie(){
+    const randomPage = Math.floor(Math.random() * 500) + 1;
+
+    const url = "https://api.themoviedb.org/3/discover/movie"
+    
+    const response = await firstValueFrom(this.http.get<movieListResponse>(url, {
+          headers: {
+            "Authorization": `Bearer ${environment.tmdbToken}`,
+          },
+          params: {
+             page: randomPage
+          }
+    }))
+
+  const results = response.results;
+
+  const randomMovie = results[Math.floor(Math.random() * results.length)];
+  
+  console.log(randomMovie)
+  this.addToWatchlist(randomMovie);
+
+  
+
   }
 
 }
