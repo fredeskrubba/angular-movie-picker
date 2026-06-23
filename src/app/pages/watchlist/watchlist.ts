@@ -59,6 +59,11 @@ export class Watchlist implements OnInit {
     this.ratingMenuOpen.set(true);
     this.currentMovie.set(movie);
   }
+
+  addRandomMovie(){
+    console.log("random movie added");
+  }
+
   ngOnInit() {
     this.getWatchlist();
   }

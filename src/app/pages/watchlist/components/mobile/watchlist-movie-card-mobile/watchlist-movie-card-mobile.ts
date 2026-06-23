@@ -33,7 +33,6 @@ export class WatchlistMovieCardMobile {
     }
 
     openRateMenu(){
-        console.log(1211)
         this.openRatingMenu.emit();
     }
 }

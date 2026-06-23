@@ -24,12 +24,12 @@
             <div class="watchlist-searchbar">
                 <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)" value="{{this.searchQuery()}}">
             </div>
-            <button class="random-button">
+            <button class="random-button" (click)="addRandomMovie()">
                 <app-icon name="random-icon"/>
                 Add Random movie
             </button>
         </div>
-        <button class="random-button-mobile">
+        <button class="random-button-mobile" (click)="addRandomMovie()">
             <app-icon name="random-icon"/>
             Add Random movie
         </button>

@@ -25,7 +25,6 @@ export class WatchlistService {
       } else {
           this.watchlist.set(loadedWatchlist)
       }
-      console.log(loadedWatchlist)
       return loadedWatchlist;
       
     } catch (e) {
