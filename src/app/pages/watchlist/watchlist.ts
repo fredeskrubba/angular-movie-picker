@@ -7,11 +7,13 @@ import { Movie } from '../../models/movie';
 import { WatchlistService } from '../../services/watchlist';
 import { WatchlistMovieCardMobile } from './components/mobile/watchlist-movie-card-mobile/watchlist-movie-card-mobile';
 import { RatingMenu } from './components/mobile/rating-menu/rating-menu';
+import { SearchMenu } from '../../global-components/navbar/mobile/search-menu/search-menu';
+import { SearchToggle } from '../../global-components/navbar/mobile/search-toggle/search-toggle';
 
 
 @Component({
   selector: 'app-watchlist',
-  imports: [WatchlistMovieCard, WatchlistMovieCardMobile, Icon, RatingMenu],
+  imports: [WatchlistMovieCard, WatchlistMovieCardMobile, Icon, RatingMenu, SearchMenu, SearchToggle],
   templateUrl: './watchlist.html',
   styleUrl: './watchlist.css',
 })
@@ -23,6 +25,7 @@ export class Watchlist implements OnInit {
   watchlistFilter = WatchlistFilter;
 
   searchQuery = signal("");
+  mobileSearchMenuIsOpen = signal(false);
   currentFilter = signal(WatchlistFilter.All);
 
   ratingMenuOpen = signal(false);

@@ -96,4 +96,15 @@
       [movie]="this.currentMovie()"
       (closed)="ratingMenuOpen.set(false)"
     />
+
+    <app-search-toggle
+      [isOpen]="mobileSearchMenuIsOpen()"
+      (toggleSearch)="mobileSearchMenuIsOpen.set(!mobileSearchMenuIsOpen())"
+    />
+    <app-search-menu
+      [isOpen]="mobileSearchMenuIsOpen()"
+      (closed)="mobileSearchMenuIsOpen.set(false)"
+      (search)="onSearchUpdated($event)"
+    />
+    
 </main>
