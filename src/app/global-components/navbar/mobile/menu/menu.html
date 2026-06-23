@@ -1,8 +1,6 @@
 @if(isOpen){
   <div class="menu-overlay" (click)="closeMenu()">
-
     <div class="menu-content" (click)="$event.stopPropagation()">
-      <button class="close-btn" (click)="closeMenu()">×</button>
       <ul>
         <li routerLink="/browse" routerLinkActive="active" (click)="closeMenu()">
           <span class="flex-container">

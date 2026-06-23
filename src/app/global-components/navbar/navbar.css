@@ -91,7 +91,7 @@ h1 {
     top: var(--navbar-height);
     left: 0;
     right: 0;
-    z-index: 9998;
+    z-index: 9997;
 }
 
 :host(.has-subnav) {
