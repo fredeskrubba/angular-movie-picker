@@ -135,7 +135,6 @@ export class WatchlistService {
 
   const randomMovie = results[Math.floor(Math.random() * results.length)];
   
-  console.log(randomMovie)
   this.addToWatchlist(randomMovie);
 
   

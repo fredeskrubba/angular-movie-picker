@@ -98,6 +98,11 @@ h1 {
     height: calc(var(--navbar-height) + var(--subnavbar-height));
 }
 
+:host(.no-subnav) {
+   height: calc(var(--navbar-height));
+
+}
+
 .desktop-subnavbar {
     display: flex;
 }

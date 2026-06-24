@@ -1,94 +1,86 @@
 <main class="watchlist-container">
-    <div class="filter-section">
-        <div class="stats">
-            <div class="stat" (click)="changeFilter(watchlistFilter.All)" [class.active]="currentFilter() === watchlistFilter.All" aria-label="All movies">
-                <h4>Total movies</h4>
-                <p>{{ this.items() ? this.items().length : 0 }}</p>
-            </div>
-            <div class="stat" (click)="changeFilter(watchlistFilter.Watched)" [class.active]="currentFilter() === watchlistFilter.Watched" aria-label="Watched movies">
-                <h4>Watched</h4>
-                <p>{{ this.items().filter(m => m.isWatched).length || 0 }}</p>
-            </div>
-            <div class="stat" (click)="changeFilter(watchlistFilter.NotWatched)" [class.active]="currentFilter() === watchlistFilter.NotWatched" aria-label="Not watched movies">
-                <h4>Not watched</h4>
-                <p>{{ this.items().filter(m => !m.isWatched).length || 0 }}</p>
-            </div>
+    <div class="stats">
+        <div class="stat" (click)="changeFilter(watchlistFilter.All)" [class.active]="currentFilter() === watchlistFilter.All" aria-label="All movies">
+            <h4>Total movies</h4>
+            <p>{{ this.items() ? this.items().length : 0 }}</p>
         </div>
-        <div class="filter-box">
-
+        <div class="stat" (click)="changeFilter(watchlistFilter.Watched)" [class.active]="currentFilter() === watchlistFilter.Watched" aria-label="Watched movies">
+            <h4>Watched</h4>
+            <p>{{ this.items().filter(m => m.isWatched).length || 0 }}</p>
+        </div>
+        <div class="stat" (click)="changeFilter(watchlistFilter.NotWatched)" [class.active]="currentFilter() === watchlistFilter.NotWatched" aria-label="Not watched movies">
+            <h4>Not watched</h4>
+            <p>{{ this.items().filter(m => !m.isWatched).length || 0 }}</p>
         </div>
     </div>
-    <div class="movie-section">
-
-        <div class="action-header">
-            <div class="watchlist-searchbar">
-                <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)" value="{{this.searchQuery()}}">
-            </div>
-            <button class="random-button" (click)="addRandomMovie()">
-                <app-icon name="random-icon"/>
-                Add Random movie
-            </button>
+    <div class="action-header">
+        <div class="watchlist-searchbar">
+            <input #searchQuery type="text" placeholder="Search for movie title" (input)="onSearchUpdated(searchQuery.value)" value="{{this.searchQuery()}}">
         </div>
-        <button class="random-button-mobile" (click)="addRandomMovie()">
+        <button class="random-button" (click)="addRandomMovie()">
             <app-icon name="random-icon"/>
             Add Random movie
         </button>
-        <div class="movie-grid-desktop">
-            @if (this.items() ? this.items().length > 0 : false) {
-                
-                @switch (currentFilter()) {
-                    @case (watchlistFilter.All) {
-                        @for (movie of this.items(); track movie.id) {
-                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                        }
-                    }
-                    @case (watchlistFilter.Watched) {
-                        @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                        }
-                    }
-                    @case (watchlistFilter.NotWatched) {
-                        @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
-                        }
+    </div>
+    <button class="random-button-mobile" (click)="addRandomMovie()">
+        <app-icon name="random-icon"/>
+        Add Random movie
+    </button>
+    <div class="movie-grid-desktop">
+        @if (this.items() ? this.items().length > 0 : false) {
+            
+            @switch (currentFilter()) {
+                @case (watchlistFilter.All) {
+                    @for (movie of this.items(); track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                     }
                 }
-            } @else if(this.searchQuery() != "" && this.items().length <= 0) {
-            
-                <p class="no-movie-message">No movies found with that title</p>
-            } @else {
-                
-                <p class="no-movie-message">Your watchlist is empty.</p>
-            }
-        </div>
-        <div class="movie-list-mobile">
-            @if (this.items() ? this.items().length > 0 : false) {
-                
-                @switch (currentFilter()) {
-                    @case (watchlistFilter.All) {
-                        @for (movie of this.items(); track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
-                        }
-                    }
-                    @case (watchlistFilter.Watched) {
-                        @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
-                        }
-                    }
-                    @case (watchlistFilter.NotWatched) {
-                        @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
-                            <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
-                        }
+                @case (watchlistFilter.Watched) {
+                    @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
                     }
                 }
-            } @else if(this.searchQuery() != "" && this.items().length <= 0) {
-            
-                <p class="no-movie-message">No movies found with that title</p>
-            } @else {
-                
-                <p class="no-movie-message">Your watchlist is empty.</p>
+                @case (watchlistFilter.NotWatched) {
+                    @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card [watchlistMovie]="movie"></app-watchlist-movie-card>
+                    }
+                }
             }
-        </div>
+        } @else if(this.searchQuery() != "" && this.items().length <= 0) {
+        
+            <p class="no-movie-message">No movies found with that title</p>
+        } @else {
+            
+            <p class="no-movie-message">Your watchlist is empty.</p>
+        }
+    </div>
+    <div class="movie-list-mobile">
+        @if (this.items() ? this.items().length > 0 : false) {
+            
+            @switch (currentFilter()) {
+                @case (watchlistFilter.All) {
+                    @for (movie of this.items(); track movie.id) {
+                        <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
+                    }
+                }
+                @case (watchlistFilter.Watched) {
+                    @for (movie of this.items().filter(m => m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
+                    }
+                }
+                @case (watchlistFilter.NotWatched) {
+                    @for (movie of this.items().filter(m => !m.isWatched) || []; track movie.id) {
+                        <app-watchlist-movie-card-mobile [watchlistMovie]="movie" (openRatingMenu)="openRatingMenu(movie)"></app-watchlist-movie-card-mobile>
+                    }
+                }
+            }
+        } @else if(this.searchQuery() != "" && this.items().length <= 0) {
+        
+            <p class="no-movie-message">No movies found with that title</p>
+        } @else {
+            
+            <p class="no-movie-message">Your watchlist is empty.</p>
+        }
     </div>
 
     <app-rating-menu

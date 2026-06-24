@@ -62,7 +62,6 @@ export class Watchlist implements OnInit {
 
   addRandomMovie(){
     this.watchlistService.addRandomMovie();
-    console.log("random movie added");
   }
 
   ngOnInit() {

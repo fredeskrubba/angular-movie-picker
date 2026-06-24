@@ -29,6 +29,10 @@ export class Navbar {
     return this.showSubnav();
   }
 
+   @HostBinding('class.no-subnav') get noSubnav() {
+    return !this.showSubnav();
+  }
+
   constructor() {
     this.router.events
       .pipe(

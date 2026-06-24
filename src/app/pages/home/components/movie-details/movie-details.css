@@ -139,8 +139,14 @@
     gap: 10px;
 }
 
+
+.director {
+    margin-top: 5px;
+}
+
 .director h3, .cast h3 {
     border-bottom: 1px solid var(--accent);
+    margin: 15px 0;
 }
 
 .cast-slider, .director-slider {
