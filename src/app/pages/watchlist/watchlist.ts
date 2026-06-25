@@ -61,6 +61,7 @@ export class Watchlist implements OnInit {
   }
 
   addRandomMovie(){
+    this.currentFilter.set(WatchlistFilter.All);
     this.watchlistService.addRandomMovie();
   }
 

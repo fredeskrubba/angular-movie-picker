@@ -70,6 +70,7 @@
   font-size: 1.2rem;
   display: flex;
   gap: 1rem;
+  align-items: center;
 }
 
 .toggle-watched-button {
@@ -90,6 +91,11 @@
   fill: var(--color-delete);
 }
 
+.toggle-watched-button app-icon .toggle-unwatched-button app-icon {
+  height: 16px;
+  width: 16px;
+
+}
 .remove-button {
   display: flex;
   gap: 1rem;

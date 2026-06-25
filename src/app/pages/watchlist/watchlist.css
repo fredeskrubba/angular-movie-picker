@@ -105,8 +105,11 @@
 .random-button-mobile {
     display: none;
     padding: 1rem;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 600;
     align-items: center;
+    height: 50px;
+    align-self: start;
 }
 
 .random-button app-icon, .random-button-mobile app-icon {
@@ -151,12 +154,16 @@
 }
 
 @media (max-width: 1023px) {
+    :host {
+        flex: none;
+        overflow-y: auto;
+        height: 100%;
+    }
+
     .watchlist-container {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
        text-align: center;
-       
+       height: 100%;
+       overflow-y: auto;
     }
     
     .stats {
@@ -189,6 +196,9 @@
         display: flex;
         flex-direction: column;
         gap: 1rem;
+        overflow-y: auto;
+        height: 100%;
+        min-height: 0;
     }
 }
 
