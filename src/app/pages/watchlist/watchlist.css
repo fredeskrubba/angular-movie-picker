@@ -153,7 +153,61 @@
     color: var(--accent);
 }
 
-@media (max-width: 1023px) {
+
+@media (max-width: 769px){
+  :host {
+        flex: none;
+        overflow-y: auto;
+        height: 100%;
+        display: block;
+    }
+
+    .watchlist-container {
+       text-align: center;
+       height: 100%;
+       overflow-y: auto;
+       display: flex;
+       flex-direction: column;
+    }
+    
+    .stats {
+        justify-content: start;
+    }
+    .stats .stat {
+        min-width: 0;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .stats .stat h4 {
+        font-size: 0.9rem;
+    }
+
+    .action-header {
+        display: none;
+    }
+
+    .random-button-mobile {
+        display: flex;
+        width: 100%;
+    }
+    .movie-grid-desktop {
+        display: none;
+    }
+
+    .movie-list-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        overflow-y: auto;
+        height: 100%;
+        min-height: 0;
+    }
+}
+
+@media (max-width: 425) {
     :host {
         flex: none;
         overflow-y: auto;

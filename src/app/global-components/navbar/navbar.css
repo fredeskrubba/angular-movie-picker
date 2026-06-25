@@ -176,7 +176,7 @@ svg {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 1023px) {
     :host {
         height: var(--navbar-height-mobile);
     }
@@ -228,5 +228,16 @@ svg {
     
     h1 {
         font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 321px){
+    .menu-button {
+        width: 25px;
+        height: 25px;
+    }
+
+    .nav-icon {
+        display: none;
     }
 }

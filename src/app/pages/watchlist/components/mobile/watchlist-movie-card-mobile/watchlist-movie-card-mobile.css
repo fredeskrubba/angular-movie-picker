@@ -110,3 +110,32 @@
 button:hover {
   cursor: pointer;
 }
+
+@media (max-width: 321px){
+    .header h2 {
+      font-size: 1.5rem;
+          line-height: 1.1;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    word-break: break-word;
+  }
+
+  .remove-button {
+    font-size: 1.4rem;
+    padding: 0.2rem;
+  }
+
+  .toggle-unwatched-button, .toggle-watched-button {
+     font-size: 1.4rem;
+    padding: 0.2rem;
+  }
+  .remove-button app-icon {
+    display: none;
+  }
+  .toggle-unwatched-button app-icon, .toggle-watched-button app-icon {
+    display: none;
+
+  }
+}

@@ -121,7 +121,7 @@ main.show-details {
 }
 
 
-@media (max-width: 1023px) {
+@media (max-width: 769px) {
 
     .home-content {
         padding-top: 2.5rem;
