@@ -6,8 +6,7 @@
 }
 
 .watchlist-container {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
     flex-direction: column;
     gap: 1.5rem;
     min-height: 0;
